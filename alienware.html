@@ -7,6 +7,9 @@
 <meta content="#050509" name="theme-color"/>
 <meta content="Sala de imprensa do Alienware 15 — guia de produto, especificações e materiais para jornalistas." name="description"/>
 <title>Alienware 15 | Sala de Imprensa Brasil</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&display=swap" rel="stylesheet"/>
 <style>
     :root{
       --bg:#050509; --bg-2:#090910; --panel:rgba(20,20,28,.72); --panel-solid:#111119;
@@ -15,7 +18,7 @@
       --max:1240px; --radius:28px; --shadow:0 34px 90px rgba(0,0,0,.42);
     }
     *{box-sizing:border-box} html{scroll-behavior:smooth;background:var(--bg)}
-    body{margin:0;color:var(--text);background:var(--bg);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.5;overflow-x:hidden}
+    body{margin:0;color:var(--text);background:var(--bg);font-family:"Inter",ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-weight:400;line-height:1.5;overflow-x:hidden}
     a{color:inherit;text-decoration:none} button{font:inherit} img{max-width:100%;display:block} ::selection{background:#7c4dff;color:white}
     .noise{position:fixed;inset:0;pointer-events:none;z-index:60;opacity:.035;mix-blend-mode:screen;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E")}
     .progress{position:fixed;left:0;top:0;height:2px;width:100%;z-index:90;transform-origin:left;transform:scaleX(0);background:linear-gradient(90deg,var(--violet),var(--cyan),var(--green));box-shadow:0 0 16px var(--cyan)}
@@ -25,7 +28,7 @@
     .brand{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:.18em;font-size:.78rem;text-transform:uppercase;white-space:nowrap}.brand-logo{display:block;width:158px;height:auto;flex:0 0 auto}.brand-context{display:flex;align-items:center;gap:12px;color:#c7cad3;letter-spacing:.12em;font-size:.72rem}.brand-context:before{content:"";width:1px;height:18px;background:var(--line);display:block}.alien-mark{width:25px;height:30px;position:relative;background:conic-gradient(from 215deg,var(--green),var(--cyan),#3649ff,var(--violet),#111,var(--green));clip-path:polygon(50% 0,76% 9%,93% 31%,92% 58%,78% 82%,50% 100%,22% 82%,8% 58%,7% 31%,24% 9%)}
     .alien-mark:before,.alien-mark:after{content:"";position:absolute;top:45%;width:28%;height:13%;background:#050509;border-radius:90% 10% 90% 10%}.alien-mark:before{left:18%;transform:rotate(16deg)}.alien-mark:after{right:18%;transform:scaleX(-1) rotate(16deg)}
     .navlinks{display:flex;gap:4px;align-items:center}.navlinks a{font-size:.82rem;color:#c7cad3;padding:9px 12px;border-radius:99px;transition:.25s}.navlinks a:hover{color:white;background:rgba(255,255,255,.07)}.nav-cta{font-weight:inherit}
-    main{overflow:clip}.container{width:min(calc(100% - 40px),var(--max));margin:auto}.section{padding:110px 0;position:relative}.eyebrow{font-size:.76rem;text-transform:uppercase;letter-spacing:.23em;color:#b8a5ff;font-weight:750;margin-bottom:16px}.headline{font-size:clamp(2.4rem,6vw,5.8rem);line-height:.95;letter-spacing:-.055em;margin:0;font-weight:740}.headline .gradient{background:linear-gradient(90deg,#43ff97 0%,#46f0cb 22%,#47cfff 46%,#4d7eff 72%,#6a4dff 100%);-webkit-background-clip:text;background-clip:text;color:transparent}.subhead{font-size:clamp(1rem,1.6vw,1.3rem);color:var(--muted);max-width:720px;margin:24px 0 0}.section-title{font-size:clamp(2.2rem,4.2vw,4.3rem);letter-spacing:-.045em;line-height:1.02;margin:0 0 20px}.section-copy{color:var(--muted);font-size:1.08rem;max-width:720px;margin:0}
+    main{overflow:clip}.container{width:min(calc(100% - 40px),var(--max));margin:auto}.section{padding:110px 0;position:relative}.eyebrow{font-size:.76rem;text-transform:uppercase;letter-spacing:.23em;color:#b8a5ff;font-weight:750;margin-bottom:16px}.headline{font-size:clamp(2.4rem,6vw,5.8rem);line-height:.95;letter-spacing:-.055em;margin:0;font-weight:300}.headline.full-gradient{background:linear-gradient(90deg,#43ff97 0%,#46f0cb 22%,#47cfff 46%,#4d7eff 72%,#6a4dff 100%);-webkit-background-clip:text;background-clip:text;color:transparent}.headline .gradient{background:inherit;-webkit-background-clip:inherit;background-clip:inherit;color:inherit}.subhead{font-size:clamp(1rem,1.6vw,1.3rem);color:var(--muted);max-width:720px;margin:24px 0 0}.section-title{font-size:clamp(2.2rem,4.2vw,4.3rem);letter-spacing:-.045em;line-height:1.02;margin:0 0 20px;font-weight:300}.section-copy{color:var(--muted);font-size:1.08rem;max-width:720px;margin:0}
     .hero{min-height:100svh;display:flex;align-items:center;padding:150px 0 70px;position:relative}.hero-inner{display:grid;grid-template-columns:1.03fr 1.12fr;gap:20px;align-items:center}.hero-copy{position:relative;z-index:4}.hero-badge{display:inline-flex;gap:8px;align-items:center;border:1px solid rgba(156,108,255,.35);background:rgba(124,77,255,.09);color:#d9ceff;border-radius:999px;padding:8px 12px;font-size:.8rem;margin-bottom:24px}.dot{width:7px;height:7px;border-radius:50%;background:#65f7c1;box-shadow:0 0 14px #65f7c1}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border-radius:999px;padding:13px 18px;border:1px solid var(--line);background:rgba(255,255,255,.055);color:white;font-weight:700;transition:.25s;cursor:pointer}.btn:hover{transform:translateY(-2px);background:rgba(255,255,255,.1)}.btn.primary{background:white;color:#08080c;border-color:white}
     .hero-stage{position:relative;min-height:630px}.halo{position:absolute;inset:12% 2% 5% 4%;border-radius:50%;background:radial-gradient(circle at 50% 50%,rgba(80,222,255,.19),rgba(116,71,255,.11) 28%,transparent 65%);filter:blur(16px)}.hero-product{position:absolute;width:min(800px,64vw);right:-11%;top:5%;filter:drop-shadow(0 38px 45px rgba(0,0,0,.66));will-change:transform;transform:translate3d(0,var(--hero-y,0),0) rotate(var(--hero-r,0deg))}.hero-product.secondary{width:min(430px,34vw);right:33%;top:42%;opacity:.55;filter:blur(.2px) drop-shadow(0 25px 35px rgba(0,0,0,.55));mix-blend-mode:screen}
     .spec-float{position:absolute;right:0;bottom:8%;display:grid;grid-template-columns:repeat(2,minmax(135px,1fr));gap:10px;width:390px}.spec-pill{border:1px solid var(--line);background:rgba(12,12,18,.67);backdrop-filter:blur(18px);border-radius:18px;padding:15px 16px;box-shadow:var(--shadow)}.spec-pill strong{font-size:1.25rem;display:block;letter-spacing:-.03em}.spec-pill span{font-size:.78rem;color:var(--muted)}.scroll-cue{position:absolute;left:50%;bottom:24px;translate:-50% 0;color:#80838d;font-size:.72rem;text-transform:uppercase;letter-spacing:.16em;display:flex;gap:9px;align-items:center}.scroll-cue:before{content:"";width:28px;height:1px;background:linear-gradient(90deg,transparent,#777)}
@@ -46,7 +49,7 @@
 
     .config-common{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:22px 30px 8px}.config-common-item{border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.035);border-radius:17px;padding:14px 15px}.config-common-item b{display:block;font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:#8f93a0;margin-bottom:5px}.config-common-item span{font-size:.92rem;color:#f0f1f5}.config-table-wrap{padding:18px 30px 8px;overflow-x:auto}.config-table{width:100%;border-collapse:collapse;min-width:830px}.config-table th{text-align:left;padding:11px 12px;color:#999daa;font-size:.72rem;text-transform:uppercase;letter-spacing:.09em;border-bottom:1px solid rgba(255,255,255,.14);white-space:nowrap}.config-table td{padding:14px 12px;border-bottom:1px solid rgba(255,255,255,.07);font-size:.91rem;color:#eef0f5;vertical-align:top}.config-table tbody tr:last-child td{border-bottom:0}.config-table td strong{font-weight:720}.config-table .os{color:#b9bcc7}.config-table .gpu{color:#d8ceff}.config-notes{display:grid;grid-template-columns:repeat(2,1fr);gap:0 28px;padding:13px 30px 16px}.config-note-row{display:grid;grid-template-columns:145px 1fr;gap:16px;padding:12px 0;border-top:1px solid rgba(255,255,255,.07)}.config-note-row b{color:#969aa6;font-weight:620}.config-note-row span{color:#eef0f5}.config-copy-note{padding:0 30px 25px;color:#7f8390;font-size:.79rem}.config-table-caption{padding:12px 30px 0;color:#aeb1bc;font-size:.88rem}.config-table-caption strong{color:#fff}
     @media(max-width:980px){.nav-contact{display:inline-flex!important}.performance-showcase{grid-template-columns:1fr}.performance-stack{grid-template-columns:repeat(2,1fr)}.navlinks a:not(.nav-cta){display:none}.hero-inner,.feature-grid,.performance-grid{grid-template-columns:1fr}.hero{padding-top:135px}.hero-stage{min-height:560px}.hero-product{width:100%;right:-8%;top:0}.hero-product.secondary{width:55%;right:42%;top:46%}.spec-float{width:85%;right:0;bottom:2%}.quickfacts{grid-template-columns:repeat(2,1fr)}.visual-card{min-height:500px}.thermal-stage{height:760px}.thermal-copy{width:60%}.thermal-layer.mobo{width:90%;right:-15%}.thermal-layer.fans{width:72%}.thermal-layer.memory{width:70%;right:-9%}.durability-grid{grid-template-columns:1fr 1fr}.durability-main{grid-column:1/-1}.press-links{grid-template-columns:repeat(2,1fr)}.gallery-grid{grid-auto-rows:95px}.gallery-item:nth-child(n){grid-column:span 6}.gallery-item:nth-child(1),.gallery-item:nth-child(2){grid-row:span 4}.gallery-item:nth-child(n+3){grid-row:span 3}}
-    @media(max-width:680px){.performance-hero-card{min-height:580px}.performance-hero-copy{left:24px;bottom:24px;width:calc(100% - 48px)}.performance-stack{grid-template-columns:1fr 1fr}.performance-value-card{padding:20px;min-height:145px}.gpu-choice{min-width:0;flex:1 1 45%}.config-common{grid-template-columns:1fr 1fr;padding:18px 22px 4px}.config-table-wrap{padding:14px 22px 5px}.config-table-caption{padding:10px 22px 0}.config-notes{grid-template-columns:1fr;padding:10px 22px 14px}.config-note-row{grid-template-columns:1fr;gap:4px}.config-copy-note{padding:0 22px 22px}.nav{inset:10px 10px auto;padding-left:14px}.brand-context{display:none}.brand-logo{width:132px}.nav-cta{display:inline-flex!important}.container{width:min(calc(100% - 28px),var(--max))}.section{padding:82px 0}.hero{min-height:auto;padding-top:120px}.hero-inner{display:flex;flex-direction:column}.hero-copy{width:100%}.headline{font-size:clamp(3.1rem,16vw,5rem)}.hero-stage{min-height:440px;width:100%}.hero-product{width:116%;right:-10%;top:4%}.hero-product.secondary{display:none}.spec-float{width:100%;grid-template-columns:1fr 1fr;bottom:0}.spec-pill{padding:12px}.quickfacts{grid-template-columns:1fr 1fr;gap:9px}.fact{padding:19px;min-height:130px}.feature-grid{margin-top:34px}.visual-card{min-height:400px}.visual-card img{padding:20px}.info-card{padding:25px}.thermal-stage{height:700px;border-radius:28px}.thermal-copy{left:24px;top:27px;width:calc(100% - 48px)}.thermal-copy h3{font-size:2.4rem}.thermal-layer.mobo{width:140%;right:-42%;top:26%}.thermal-layer.fans{width:98%;left:-27%;bottom:6%}.thermal-layer.memory{width:96%;right:-23%;bottom:2%}.thermal-stats{left:24px;bottom:22px;right:24px}.power-card,.gpu-control{padding:25px}.gpu-visual{height:240px}.gpu-meta{grid-template-columns:1fr 1fr 1fr}.display-banner{height:560px;border-radius:28px}.display-copy{left:24px;top:25px;max-width:calc(100% - 48px)}.display-copy h3{font-size:2rem}.display-banner img{padding:140px 0 0;object-fit:contain}.durability-grid{grid-template-columns:1fr}.durability-main{min-height:350px}.spec-panel{padding:5px 20px 20px}.spec-row{grid-template-columns:1fr;gap:5px}.copy-config-head{display:block;padding:23px 22px}.copy-btn{margin-top:18px}.copy-specs{padding:6px 22px 14px}.copy-row{grid-template-columns:1fr;gap:4px;padding:13px 0}.copy-hint{padding:0 22px 22px}.gallery-grid{display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:160px}.gallery-item:nth-child(n){grid-column:span 1;grid-row:span 1}.gallery-item:nth-child(1),.gallery-item:nth-child(2){grid-column:1/-1;grid-row:span 2}.press-shell{padding:28px;border-radius:28px}.press-head{display:block}.press-links{grid-template-columns:1fr}.resource{min-height:175px}.contact-card{display:block}.footer-inner{display:block}.scroll-cue{display:none}}
+    @media(max-width:680px){.performance-hero-card{min-height:580px}.performance-hero-copy{left:24px;bottom:24px;width:calc(100% - 48px)}.performance-stack{grid-template-columns:1fr 1fr}.performance-value-card{padding:20px;min-height:145px}.gpu-choice{min-width:0;flex:1 1 45%}.config-common{grid-template-columns:1fr 1fr;padding:18px 22px 4px}.config-table-wrap{padding:14px 22px 5px}.config-table-caption{padding:10px 22px 0}.config-notes{grid-template-columns:1fr;padding:10px 22px 14px}.config-note-row{grid-template-columns:1fr;gap:4px}.config-copy-note{padding:0 22px 22px}.nav{inset:10px 10px auto;padding-left:14px}.brand-context{display:none}.brand-logo{width:132px}.nav-cta{display:inline-flex!important}.container{width:min(calc(100% - 28px),var(--max))}.section{padding:82px 0}.hero{min-height:auto;padding-top:120px}.hero-inner{display:flex;flex-direction:column}.hero-copy{width:100%}.headline{font-size:clamp(3.1rem,16vw,5rem)}.hero-stage{min-height:440px;width:100%}.hero-product{width:116%;right:-10%;top:4%}.hero-product.secondary{display:none}.spec-float{width:min(76%,290px);grid-template-columns:1fr;left:0;right:auto;bottom:0}.spec-pill{padding:12px}.spec-pill:nth-child(even){display:none}.quickfacts{grid-template-columns:1fr 1fr;gap:9px}.fact{padding:19px;min-height:130px}.feature-grid{margin-top:34px}.visual-card{min-height:400px}.visual-card img{padding:20px}.info-card{padding:25px}.thermal-stage{height:700px;border-radius:28px}.thermal-copy{left:24px;top:27px;width:calc(100% - 48px)}.thermal-copy h3{font-size:2.4rem}.thermal-layer.mobo{width:140%;right:-42%;top:26%}.thermal-layer.fans{width:98%;left:-27%;bottom:6%}.thermal-layer.memory{width:96%;right:-23%;bottom:2%}.thermal-stats{left:24px;bottom:22px;right:24px}.power-card,.gpu-control{padding:25px}.gpu-visual{height:240px}.gpu-meta{grid-template-columns:1fr 1fr 1fr}.display-banner{height:560px;border-radius:28px}.display-copy{left:24px;top:25px;max-width:calc(100% - 48px)}.display-copy h3{font-size:2rem}.display-banner img{padding:140px 0 0;object-fit:contain}.durability-grid{grid-template-columns:1fr}.durability-main{min-height:350px}.spec-panel{padding:5px 20px 20px}.spec-row{grid-template-columns:1fr;gap:5px}.copy-config-head{display:block;padding:23px 22px}.copy-btn{margin-top:18px}.copy-specs{padding:6px 22px 14px}.copy-row{grid-template-columns:1fr;gap:4px;padding:13px 0}.copy-hint{padding:0 22px 22px}.gallery-grid{display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:160px}.gallery-item:nth-child(n){grid-column:span 1;grid-row:span 1}.gallery-item:nth-child(1),.gallery-item:nth-child(2){grid-column:1/-1;grid-row:span 2}.press-shell{padding:28px;border-radius:28px}.press-head{display:block}.press-links{grid-template-columns:1fr}.resource{min-height:175px}.contact-card{display:block}.contact-card>.btn{display:flex;width:100%;margin-top:22px}.contact-person-line{margin-top:16px}.contact-actions{margin-top:8px}.footer-inner{display:block}.scroll-cue{display:none}}
 @media(max-width:680px){.modal{padding:16px}.modal-inner{width:100%;height:92vh}.modal-close{width:54px;height:54px;font-size:2.1rem;right:2px;top:2px}.modal-download{left:2px;top:4px;padding:12px 15px;font-size:.8rem}}
         @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}.hero-product,.thermal-layer,.display-banner img{transform:none!important}.bar-fill{transition:none}}
   
@@ -88,6 +91,12 @@
     .release-bottom ul{list-style:none;padding:0;margin:0}
     .release-bottom li+li{margin-top:6px}
 
+    .eyebrow,.hero-badge,.navlinks a,.btn,.release-kicker,.release-copy-btn,.release-jump-btn{font-weight:400}
+    /* aw-typography-lock: Inter Light for titles, Inter Regular elsewhere */
+    h1,h2,h3,h4,.headline,.section-title,.performance-hero-copy h3,.thermal-copy h3,.display-copy h3,.release-top h3,.resource h3,.feature-row h3{font-family:"Inter",sans-serif;font-weight:300}
+    body,p,a,button,span,div,.eyebrow,.hero-badge,.navlinks a,.btn,.release-kicker,.release-copy-btn,.release-jump-btn{font-family:"Inter",sans-serif}
+    h1,h2,h3,h4,.section-title,.headline,.thermal-copy h3,.release-top h3,.display-copy h3,.resource h3,.feature-row h3,.performance-hero-copy h3,.performance-value-card strong,.contact-card b,.release-highlight-card h4,.release-bottom h4{font-weight:300}
+
     @media(max-width:680px){.config-common{grid-template-columns:1fr 1fr;padding:18px 22px 4px}.config-table-wrap{padding:14px 22px 5px}.config-table-caption{padding:10px 22px 0}.config-notes{grid-template-columns:1fr;padding:10px 22px 14px}.config-note-row{grid-template-columns:1fr;gap:4px}.config-copy-note{padding:0 22px 22px}.press-release-lead{padding-top:75px;padding-bottom:75px}.release-top,.release-article,.release-side,.release-bottom>div{padding:22px}.release-top{display:block}.release-actions{margin-top:18px;justify-content:flex-start}.release-grid,.release-bottom{grid-template-columns:1fr}.release-side{border-left:0;border-top:1px solid var(--line)}.release-top h3{font-size:2rem}.release-quote{padding:22px}.release-meta{gap:8px}}
 </style>
 </head>
@@ -102,7 +111,7 @@
 </div>
 <nav aria-label="Navegação principal" class="nav">
 <a class="brand" href="index.html" title="Voltar ao portal de imprensa">
-<img alt="Alienware" class="brand-logo" src="assets/brand/alienware-logo-horizontal-white.png"/>
+<img alt="Alienware" class="brand-logo" src="assets/brand/alienware-logo-horizontal.png"/>
 <span class="brand-context">Sala de Imprensa</span>
 </a>
 <div class="navlinks">
@@ -121,13 +130,10 @@
 <span class="dot">
 </span> Lançamento Brasil · Material para imprensa</div>
 <div class="eyebrow">Alienware 15</div>
-<h1 class="headline">COMECE SUA JORNADA<br/>
-<span class="gradient">ALIENWARE</span>
-</h1>
+<h1 class="headline full-gradient">Comece sua jornada<br/>Alienware</h1>
 <p class="subhead">Um guia visual e direto ao ponto para jornalistas: design, performance, sistema térmico, especificações e todos os materiais de apoio em um só lugar.</p>
 <div class="hero-actions">
 <a class="btn primary" href="#produto">Explorar o produto ↓</a>
-<a class="btn" download="" href="assets/docs/reviewers-guide.pdf">Reviewer’s Guide (PDF)</a>
 </div>
 </div>
 <div aria-label="Alienware 15 em vista frontal" class="hero-stage">
@@ -408,24 +414,6 @@ A Dell Technologies (NYSE: DELL) é uma família única de empresas que fornece 
 <div class="eyebrow reveal">Pure Alienware Essentials</div>
 <h2 class="section-title reveal">Desempenho gamer em um design mais simples, moderno e móvel.</h2>
 <p class="section-copy reveal">O Alienware 15 elimina a tradicional “prateleira” térmica traseira sem abrir mão de uma arquitetura de refrigeração avançada. A proposta combina estética essencial, manutenção facilitada e recursos voltados ao jogo.</p>
-<div class="quickfacts">
-<div class="fact reveal">
-<strong>165 Hz</strong>
-<span>taxa de atualização da tela FHD+ de 15,3 polegadas.</span>
-</div>
-<div class="fact reveal delay1">
-<strong>180°</strong>
-<span>abertura máxima da dobradiça para maior flexibilidade de uso.</span>
-</div>
-<div class="fact reveal delay2">
-<strong>16 GB</strong>
-<span>memória DDR5 máxima nas configurações previstas para o Brasil.</span>
-</div>
-<div class="fact reveal delay3">
-<strong>1 TB</strong>
-<span>maior capacidade de SSD prevista na oferta brasileira.</span>
-</div>
-</div>
 <div class="feature-grid">
 <div class="visual-card reveal">
 <img alt="Alienware 15 fechado em vista traseira angular" src="assets/web/rear-angle-2.webp"/>
@@ -728,7 +716,7 @@ A Dell Technologies (NYSE: DELL) é uma família única de empresas que fornece 
 <footer>
 <div class="container footer-inner">
 <div class="brand">
-<img alt="Alienware" class="brand-logo" src="assets/brand/alienware-logo-horizontal-white.png"/>
+<img alt="Alienware" class="brand-logo" src="assets/brand/alienware-logo-horizontal.png"/>
 </div>
 <div class="footer-note">Sala de imprensa para o lançamento do Alienware 15 no Brasil. Informações técnicas consolidadas do Reviewer’s Guide fornecido; recursos e configurações podem variar por país. As afirmações de durabilidade são baseadas em análise interna Dell de janeiro de 2026. *Recursos e especificações dependem da configuração final comercializada.</div>
 </div>
