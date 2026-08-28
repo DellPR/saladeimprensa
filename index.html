@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#07080d" />
+  <title>Dell Technologies | Salas de Imprensa</title>
+  <meta name="description" content="Portal de imprensa para os lançamentos Alienware e XPS no Brasil." />
+  <style>
+    :root{--ease:cubic-bezier(.74,0,.16,1);--line:rgba(255,255,255,.18)}
+    *{box-sizing:border-box} html,body{height:100%;margin:0}
+    body{overflow:hidden;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#07080d;color:#fff}
+    button{font:inherit;color:inherit}
+    .portal{position:relative;height:100svh;width:100%;overflow:hidden;background:#05060a;isolation:isolate}
+    .portal:before{content:"";position:absolute;inset:0;z-index:20;pointer-events:none;background:linear-gradient(90deg,transparent calc(50% - .5px),rgba(255,255,255,.28) 50%,transparent calc(50% + .5px));opacity:.7;transition:opacity .35s ease}
+    .portal.transitioning:before{opacity:0}
+    .portal-head{position:fixed;z-index:30;top:max(24px,env(safe-area-inset-top));left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:12px;padding:10px 15px;border:1px solid rgba(255,255,255,.16);border-radius:999px;background:rgba(10,11,16,.32);backdrop-filter:blur(18px) saturate(130%);font-size:11px;font-weight:700;letter-spacing:.19em;text-transform:uppercase;white-space:nowrap;pointer-events:none;box-shadow:0 10px 35px rgba(0,0,0,.14);transition:.4s ease}
+    .portal-head .signal{width:7px;height:7px;border-radius:50%;background:#7effc9;box-shadow:0 0 15px #5fffb9}
+    .side{position:absolute;top:0;bottom:0;width:50%;border:0;padding:0;margin:0;overflow:hidden;cursor:pointer;text-align:left;transition:width .98s var(--ease),transform .98s var(--ease),filter .62s ease,opacity .7s ease;outline:none}
+    .side:focus-visible{box-shadow:inset 0 0 0 3px #fff;z-index:25}
+    .alienware{left:0;background:#030409}.xps{right:0;background:#d9dbdd;color:#0d0e10}
+    .alienware .texture{position:absolute;inset:-16%;background:radial-gradient(ellipse at 36% 46%,rgba(73,232,255,.42),transparent 21%),radial-gradient(ellipse at 62% 54%,rgba(88,66,255,.40),transparent 26%),radial-gradient(circle at 58% 33%,rgba(178,74,255,.26),transparent 23%),radial-gradient(circle at 31% 64%,rgba(41,255,169,.17),transparent 20%),linear-gradient(135deg,#03040a,#08051a 52%,#03050d);filter:saturate(125%);transform:scale(1.12);animation:alienDrift 10s ease-in-out infinite alternate;transition:transform 1.05s var(--ease),filter .8s ease}
+    .alienware .texture:before,.alienware .texture:after{content:"";position:absolute;inset:0;mix-blend-mode:screen;pointer-events:none}
+    .alienware .texture:before{background:repeating-linear-gradient(112deg,transparent 0 90px,rgba(115,91,255,.04) 91px 92px,transparent 93px 160px);transform:translateX(-5%)}
+    .alienware .texture:after{background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(116,239,255,.16),transparent 19%)}
+    @keyframes alienDrift{to{transform:scale(1.18) translate3d(2.5%,-1.5%,0);filter:saturate(145%) hue-rotate(5deg)}}
+    .xps .texture{position:absolute;inset:-8%;background:linear-gradient(112deg,rgba(255,255,255,.8) 0%,rgba(179,183,187,.28) 21%,rgba(250,250,250,.72) 42%,rgba(151,156,160,.30) 55%,rgba(241,242,243,.75) 72%,rgba(184,188,191,.35) 100%),repeating-linear-gradient(0deg,rgba(255,255,255,.12) 0 1px,rgba(30,30,30,.025) 1px 2px),#cfd2d4;background-size:180% 100%,100% 2px,auto;animation:metalShift 9s ease-in-out infinite alternate;transition:transform 1.05s var(--ease),filter .8s ease}
+    .xps .texture:after{content:"";position:absolute;inset:-20%;background:linear-gradient(115deg,transparent 34%,rgba(255,255,255,.74) 45%,rgba(255,255,255,.18) 51%,transparent 62%);transform:translateX(-45%);opacity:.74}
+    @keyframes metalShift{to{background-position:100% 0,0 0,0 0}}
+    .side-content{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:8vw 7vw;text-align:center;transition:transform .85s var(--ease),opacity .55s ease}
+    .brand-wrap{width:min(72%,500px);min-height:140px;display:flex;align-items:center;justify-content:center;transition:transform .7s var(--ease),filter .7s ease}
+    .alienware .brand-wrap img{width:100%;height:auto;filter:drop-shadow(0 0 28px rgba(74,232,255,.20))}
+    .xps .brand-wrap{width:min(50%,320px)}.xps .brand-wrap img{width:100%;height:auto;filter:drop-shadow(0 10px 28px rgba(255,255,255,.38))}
+    .kicker{margin-top:28px;font-size:11px;letter-spacing:.25em;text-transform:uppercase;font-weight:800;opacity:.69}
+    .title{margin:12px 0 0;font-size:clamp(19px,2.15vw,34px);line-height:1.08;font-weight:630;letter-spacing:-.035em}
+    .prompt{margin-top:28px;display:inline-flex;align-items:center;gap:11px;font-size:12px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;opacity:.78;transition:opacity .3s ease,transform .45s var(--ease)}
+    .prompt .arrow{font-size:20px;font-weight:400;transition:transform .45s var(--ease)}
+    .side:hover .brand-wrap{transform:scale(1.035)}.side:hover .prompt{opacity:1;transform:translateY(-2px)}.side:hover .prompt .arrow{transform:translateX(6px)}.side.alienware:hover .prompt .arrow{transform:translateX(-6px)}
+    .alienware:hover .texture{filter:saturate(155%) brightness(1.08)}.xps:hover .texture{filter:contrast(1.035) brightness(1.03)}
+    .pointer-glow{position:absolute;z-index:2;width:420px;height:420px;border-radius:50%;transform:translate(-50%,-50%);left:var(--gx,50%);top:var(--gy,50%);pointer-events:none;opacity:0;transition:opacity .35s ease;background:radial-gradient(circle,rgba(255,255,255,.14),transparent 66%);mix-blend-mode:screen}.side:hover .pointer-glow{opacity:1}
+    .wipe{position:absolute;z-index:8;inset:0;pointer-events:none;opacity:0}.alienware .wipe{background:linear-gradient(104deg,transparent 0 38%,rgba(91,230,255,.78) 48%,rgba(132,78,255,.6) 53%,transparent 64%);transform:translateX(-65%)}.xps .wipe{background:linear-gradient(104deg,transparent 0 38%,rgba(255,255,255,.95) 49%,rgba(255,255,255,.22) 55%,transparent 67%);transform:translateX(65%)}
+    .portal.enter-alien .alienware{width:100%;z-index:15}.portal.enter-alien .xps{transform:translateX(100%);opacity:.25}.portal.enter-xps .xps{width:100%;z-index:15}.portal.enter-xps .alienware{transform:translateX(-100%);opacity:.2}
+    .portal.enter-alien .alienware .side-content,.portal.enter-xps .xps .side-content{transform:scale(1.055)}.portal.enter-alien .alienware .texture,.portal.enter-xps .xps .texture{transform:scale(1.28)}
+    .portal.enter-alien .alienware .wipe{opacity:1;animation:swipe .92s var(--ease) both}.portal.enter-xps .xps .wipe{opacity:1;animation:swipeBack .92s var(--ease) both}
+    @keyframes swipe{0%{transform:translateX(-70%);opacity:0}20%{opacity:1}100%{transform:translateX(72%);opacity:0}}@keyframes swipeBack{0%{transform:translateX(70%);opacity:0}20%{opacity:1}100%{transform:translateX(-72%);opacity:0}}
+    .portal.transitioning .portal-head{opacity:0;transform:translateX(-50%) translateY(-15px)}
+    @media (max-width:760px){.portal:before{background:linear-gradient(180deg,transparent calc(50% - .5px),rgba(255,255,255,.30) 50%,transparent calc(50% + .5px))}.portal-head{top:max(14px,env(safe-area-inset-top));font-size:9px;letter-spacing:.15em;padding:8px 11px}.side{left:0!important;right:auto!important;width:100%;height:50%;bottom:auto;transition:height .95s var(--ease),transform .95s var(--ease),opacity .7s ease}.alienware{top:0}.xps{top:50%}.side-content{padding:42px 24px 30px}.brand-wrap{width:min(66%,400px);min-height:80px}.xps .brand-wrap{width:min(37%,230px)}.kicker{margin-top:14px;font-size:9px}.title{margin-top:7px;font-size:20px}.prompt{margin-top:13px;font-size:9px}.portal.enter-alien .alienware{height:100%;width:100%}.portal.enter-alien .xps{transform:translateY(100%)}.portal.enter-xps .xps{height:100%;top:0;width:100%}.portal.enter-xps .alienware{transform:translateY(-100%)}.pointer-glow{display:none}}
+    @media (prefers-reduced-motion:reduce){.texture{animation:none!important}.side,.side-content,.brand-wrap,.portal-head{transition-duration:.25s!important}.wipe{display:none}}
+  </style>
+</head>
+<body>
+  <main class="portal" id="portal" aria-label="Escolha uma sala de imprensa">
+    <div class="portal-head"><span class="signal"></span> Escolha sua sala de imprensa</div>
+    <button class="side alienware" type="button" data-target="alienware.html" aria-label="Abrir sala de imprensa Alienware 15">
+      <div class="texture"></div><div class="pointer-glow"></div><div class="wipe"></div>
+      <div class="side-content"><div class="brand-wrap"><img src="assets/brand/alienware-logo-horizontal-white.png" alt="Alienware" /></div><div class="kicker">Sala de imprensa</div><div class="prompt alien-prompt"><span class="arrow">←</span> Clique para explorar</div></div>
+    </button>
+    <button class="side xps" type="button" data-target="xps.html" aria-label="Abrir sala de imprensa XPS">
+      <div class="texture"></div><div class="pointer-glow"></div><div class="wipe"></div>
+      <div class="side-content"><div class="brand-wrap"><img src="assets/brand/xps-logo.png" alt="XPS" /></div><div class="kicker">Sala de imprensa</div><div class="prompt">Clique para explorar <span class="arrow">→</span></div></div>
+    </button>
+  </main>
+  <script>
+    const portal=document.getElementById('portal');const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+    document.querySelectorAll('.side').forEach(side=>{side.addEventListener('pointermove',e=>{const r=side.getBoundingClientRect();side.style.setProperty('--gx',`${e.clientX-r.left}px`);side.style.setProperty('--gy',`${e.clientY-r.top}px`);side.style.setProperty('--mx',`${((e.clientX-r.left)/r.width)*100}%`);side.style.setProperty('--my',`${((e.clientY-r.top)/r.height)*100}%`)});side.addEventListener('click',()=>{if(portal.classList.contains('transitioning'))return;portal.classList.add('transitioning',side.classList.contains('alienware')?'enter-alien':'enter-xps');setTimeout(()=>location.href=side.dataset.target,reduced?260:930)})});
+  </script>
+</body>
+</html>
