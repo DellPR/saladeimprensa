@@ -102,6 +102,26 @@
 
     @media(max-width:680px){.config-common{grid-template-columns:1fr 1fr;padding:18px 22px 4px}.config-table-wrap{padding:14px 22px 5px}.config-table-caption{padding:10px 22px 0}.config-notes{grid-template-columns:1fr;padding:10px 22px 14px}.config-note-row{grid-template-columns:1fr;gap:4px}.config-copy-note{padding:0 22px 22px}.press-release-lead{padding-top:75px;padding-bottom:75px}.release-top,.release-article,.release-side,.release-bottom>div{padding:22px}.release-top{display:block}.release-actions{margin-top:18px;justify-content:flex-start}.release-grid,.release-bottom{grid-template-columns:1fr}.release-side{border-left:0;border-top:1px solid var(--line)}.release-top h3{font-size:2rem}.release-quote{padding:22px}.release-meta{gap:8px}}
 </style>
+<style id="press-access-gate-style">
+html.press-access-locked,html.press-access-locked body{overflow:hidden}
+html.press-access-locked body>*:not(#pressAccessGate){visibility:hidden}
+#pressAccessGate{position:fixed;z-index:2147483647;inset:0;display:grid;place-items:center;padding:24px;background:radial-gradient(circle at 20% 10%,rgba(67,132,215,.2),transparent 32%),radial-gradient(circle at 82% 78%,rgba(124,77,255,.18),transparent 30%),rgba(8,12,18,.96);visibility:visible!important;font-family:Arial,sans-serif;color:#14202a}
+#pressAccessGate *{box-sizing:border-box}
+.press-access-card{width:min(430px,100%);padding:34px;border:1px solid rgba(255,255,255,.5);border-radius:28px;background:rgba(255,255,255,.96);box-shadow:0 28px 90px rgba(0,0,0,.4)}
+.press-access-kicker{margin:0 0 13px;color:#43647c;font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+.press-access-card h1{margin:0;font-size:2rem;line-height:1.05;font-weight:400;letter-spacing:-.035em}
+.press-access-copy{margin:14px 0 24px;color:#64717c;font-size:.95rem;line-height:1.55}
+.press-access-label{display:block;margin-bottom:8px;color:#40515d;font-size:.78rem;font-weight:700}
+.press-access-row{display:flex;gap:9px}
+.press-access-input{min-width:0;flex:1;border:1px solid rgba(30,55,74,.2);border-radius:999px;padding:12px 15px;background:#f7f9fa;color:#14202a;font:inherit;outline:none}
+.press-access-input:focus{border-color:#1684d7;box-shadow:0 0 0 3px rgba(22,132,215,.12)}
+.press-access-submit{border:0;border-radius:999px;padding:12px 17px;background:#14202a;color:#fff;font:inherit;font-weight:700;cursor:pointer}
+.press-access-error{min-height:20px;margin:10px 2px 0;color:#b42318;font-size:.8rem}
+@media(max-width:520px){.press-access-card{padding:26px}.press-access-row{display:grid}.press-access-submit{width:100%}}
+</style>
+<script>
+(()=>{const storageKey="dell-pr-press-access-v1",expectedHash="0f0c449a061548dc79e10c2d6a85ced2763a9af226204e23c2605c28a157e995";let granted=false;try{granted=sessionStorage.getItem(storageKey)==="granted"}catch(e){}if(granted)return;document.documentElement.classList.add("press-access-locked");const digest=async value=>{const data=new TextEncoder().encode(value),hash=await crypto.subtle.digest("SHA-256",data);return Array.from(new Uint8Array(hash),byte=>byte.toString(16).padStart(2,"0")).join("")};const mount=()=>{const gate=document.createElement("div");gate.id="pressAccessGate";gate.setAttribute("role","dialog");gate.setAttribute("aria-modal","true");gate.setAttribute("aria-labelledby","pressAccessTitle");gate.innerHTML='<div class="press-access-card"><p class="press-access-kicker">Material para imprensa</p><h1 id="pressAccessTitle">Acesso reservado</h1><p class="press-access-copy">Digite a senha para acessar a sala de imprensa.</p><form id="pressAccessForm"><label class="press-access-label" for="pressAccessInput">Senha</label><div class="press-access-row"><input class="press-access-input" id="pressAccessInput" type="password" autocomplete="current-password" required><button class="press-access-submit" type="submit">Entrar</button></div><p class="press-access-error" id="pressAccessError" role="alert"></p></form></div>';document.body.appendChild(gate);const form=document.getElementById("pressAccessForm"),input=document.getElementById("pressAccessInput"),error=document.getElementById("pressAccessError");input.focus();form.addEventListener("submit",async event=>{event.preventDefault();error.textContent="Verificando…";try{if(await digest(input.value)===expectedHash){try{sessionStorage.setItem(storageKey,"granted")}catch(e){}gate.remove();document.documentElement.classList.remove("press-access-locked")}else{error.textContent="Senha incorreta. Tente novamente.";input.value="";input.focus()}}catch(e){error.textContent="Não foi possível validar a senha neste navegador."}})};if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",mount,{once:true});else mount()})();
+</script>
 </head>
 <body>
 <div class="grid-bg">
