@@ -50,6 +50,26 @@
     @media (max-width:760px){.portal:before{background:linear-gradient(180deg,transparent calc(50% - .5px),rgba(255,255,255,.30) 50%,transparent calc(50% + .5px))}.portal-head{top:max(14px,env(safe-area-inset-top));font-size:9px;letter-spacing:.15em;padding:8px 11px}.side{left:0!important;right:auto!important;width:100%;height:50%;bottom:auto;transition:height .95s var(--ease),transform .95s var(--ease),opacity .7s ease}.alienware{top:0}.xps{top:50%}.side-content{padding:42px 24px 30px}.brand-wrap{width:min(66%,400px);min-height:80px}.xps .brand-wrap{width:min(37%,230px)}.kicker{margin-top:14px;font-size:9px}.title{margin-top:7px;font-size:20px}.prompt{margin-top:13px;font-size:9px}.portal.enter-alien .alienware{height:100%;width:100%}.portal.enter-alien .xps{transform:translateY(100%)}.portal.enter-xps .xps{height:100%;top:0;width:100%}.portal.enter-xps .alienware{transform:translateY(-100%)}.pointer-glow{display:none}}
     @media (prefers-reduced-motion:reduce){.texture{animation:none!important}.side,.side-content,.brand-wrap,.portal-head{transition-duration:.25s!important}.wipe{display:none}}
   </style>
+<style id="press-access-gate-style">
+html.press-access-locked,html.press-access-locked body{overflow:hidden}
+html.press-access-locked body>*:not(#pressAccessGate){visibility:hidden}
+#pressAccessGate{position:fixed;z-index:2147483647;inset:0;display:grid;place-items:center;padding:24px;background:radial-gradient(circle at 20% 10%,rgba(67,132,215,.2),transparent 32%),radial-gradient(circle at 82% 78%,rgba(124,77,255,.18),transparent 30%),rgba(8,12,18,.96);visibility:visible!important;font-family:Arial,sans-serif;color:#14202a}
+#pressAccessGate *{box-sizing:border-box}
+.press-access-card{width:min(430px,100%);padding:34px;border:1px solid rgba(255,255,255,.5);border-radius:28px;background:rgba(255,255,255,.96);box-shadow:0 28px 90px rgba(0,0,0,.4)}
+.press-access-kicker{margin:0 0 13px;color:#43647c;font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+.press-access-card h1{margin:0;font-size:2rem;line-height:1.05;font-weight:400;letter-spacing:-.035em}
+.press-access-copy{margin:14px 0 24px;color:#64717c;font-size:.95rem;line-height:1.55}
+.press-access-label{display:block;margin-bottom:8px;color:#40515d;font-size:.78rem;font-weight:700}
+.press-access-row{display:flex;gap:9px}
+.press-access-input{min-width:0;flex:1;border:1px solid rgba(30,55,74,.2);border-radius:999px;padding:12px 15px;background:#f7f9fa;color:#14202a;font:inherit;outline:none}
+.press-access-input:focus{border-color:#1684d7;box-shadow:0 0 0 3px rgba(22,132,215,.12)}
+.press-access-submit{border:0;border-radius:999px;padding:12px 17px;background:#14202a;color:#fff;font:inherit;font-weight:700;cursor:pointer}
+.press-access-error{min-height:20px;margin:10px 2px 0;color:#b42318;font-size:.8rem}
+@media(max-width:520px){.press-access-card{padding:26px}.press-access-row{display:grid}.press-access-submit{width:100%}}
+</style>
+<script>
+(()=>{const storageKey="dell-pr-press-access-v1",expectedHash="0f0c449a061548dc79e10c2d6a85ced2763a9af226204e23c2605c28a157e995";let granted=false;try{granted=sessionStorage.getItem(storageKey)==="granted"}catch(e){}if(granted)return;document.documentElement.classList.add("press-access-locked");const digest=async value=>{const data=new TextEncoder().encode(value),hash=await crypto.subtle.digest("SHA-256",data);return Array.from(new Uint8Array(hash),byte=>byte.toString(16).padStart(2,"0")).join("")};const mount=()=>{const gate=document.createElement("div");gate.id="pressAccessGate";gate.setAttribute("role","dialog");gate.setAttribute("aria-modal","true");gate.setAttribute("aria-labelledby","pressAccessTitle");gate.innerHTML='<div class="press-access-card"><p class="press-access-kicker">Material para imprensa</p><h1 id="pressAccessTitle">Acesso reservado</h1><p class="press-access-copy">Digite a senha para acessar a sala de imprensa.</p><form id="pressAccessForm"><label class="press-access-label" for="pressAccessInput">Senha</label><div class="press-access-row"><input class="press-access-input" id="pressAccessInput" type="password" autocomplete="current-password" required><button class="press-access-submit" type="submit">Entrar</button></div><p class="press-access-error" id="pressAccessError" role="alert"></p></form></div>';document.body.appendChild(gate);const form=document.getElementById("pressAccessForm"),input=document.getElementById("pressAccessInput"),error=document.getElementById("pressAccessError");input.focus();form.addEventListener("submit",async event=>{event.preventDefault();error.textContent="Verificando…";try{if(await digest(input.value)===expectedHash){try{sessionStorage.setItem(storageKey,"granted")}catch(e){}gate.remove();document.documentElement.classList.remove("press-access-locked")}else{error.textContent="Senha incorreta. Tente novamente.";input.value="";input.focus()}}catch(e){error.textContent="Não foi possível validar a senha neste navegador."}})};if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",mount,{once:true});else mount()})();
+</script>
 </head>
 <body>
   <main class="portal" id="portal" aria-label="Escolha uma sala de imprensa">
