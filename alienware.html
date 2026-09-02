@@ -120,6 +120,8 @@ html.press-access-locked body>*:not(#pressAccessGate){visibility:hidden}
 @media(max-width:520px){.press-access-card{padding:26px}.press-access-row{display:grid}.press-access-submit{width:100%}}
 .hero-price-callout{position:absolute;right:-1.5%;bottom:2%;width:min(390px,80%);padding:22px 24px;border-right:2px solid var(--cyan);background:linear-gradient(270deg,rgba(5,5,10,.78),rgba(5,5,10,.18));backdrop-filter:blur(10px);font-family:"Inter",sans-serif;color:#e9ebf2;font-size:clamp(1.15rem,2vw,1.65rem);font-weight:300;line-height:1.35;letter-spacing:-.025em;text-align:right;text-shadow:0 2px 18px rgba(0,0,0,.65)}.hero-price-callout strong{font-weight:400;color:#fff}.video-embed video{display:block;width:100%;height:100%;object-fit:contain}.video-actions{display:flex;gap:9px;flex-wrap:wrap;justify-content:flex-end}.video-download{display:inline-flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:11px 16px;background:rgba(255,255,255,.06);color:#fff;font-weight:760;transition:.2s}.video-download:hover{transform:translateY(-1px)}.launch-mix-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px}.floating-home{position:fixed;z-index:78;right:max(18px,calc((100vw - var(--max))/2));bottom:22px;width:54px;height:54px;border:1px solid rgba(68,255,154,.9);border-radius:50%;display:grid;place-items:center;background:var(--green);backdrop-filter:blur(16px);box-shadow:0 0 24px rgba(68,255,154,.32),0 14px 38px rgba(0,0,0,.38);color:#04120b;transition:.2s}.floating-home:hover{transform:translateY(-2px);border-color:#b8ffd7;background:#76ffb1}.floating-home svg{width:23px;height:23px}
 @media(max-width:680px){.hero-price-callout{right:0;left:auto;bottom:0;width:min(300px,82%);padding:16px 18px}.launch-mix-head{display:block}.launch-mix-head .copy-btn{width:100%;margin-top:18px}.video-actions{width:100%;justify-content:stretch}.video-actions>*{flex:1 1 100%}.floating-home{right:16px;bottom:calc(16px + env(safe-area-inset-bottom));width:50px;height:50px}}
+.mix-card.bundle-card{position:relative;min-height:148px;padding:18px 178px 18px 18px;border-color:rgba(68,255,154,.46);background:radial-gradient(circle at 88% 42%,rgba(88,230,255,.16),transparent 34%),linear-gradient(135deg,rgba(124,77,255,.17),rgba(7,7,13,.68) 62%);overflow:hidden}.mix-card.bundle-card:hover{border-color:rgba(68,255,154,.78)}.bundle-label{display:inline-flex;grid-column:1;width:max-content;margin-bottom:10px;padding:6px 9px;border:1px solid rgba(68,255,154,.42);border-radius:999px;background:rgba(68,255,154,.08);color:#8dffbd;font-size:.66rem;font-weight:760;letter-spacing:.12em;text-transform:uppercase}.bundle-card strong,.bundle-card .mix-details{grid-column:1}.bundle-card strong{font-size:.92rem;line-height:1.28}.bundle-card .mix-details{align-self:end}.bundle-card .mix-price{position:absolute;z-index:3;right:14px;top:14px;grid-column:auto;grid-row:auto;background:rgba(5,8,13,.76);backdrop-filter:blur(10px)}.bundle-art{position:absolute;right:6px;bottom:-10px;width:168px;height:118px;pointer-events:none}.bundle-laptop{position:absolute;width:116px;right:34px;bottom:5px;filter:drop-shadow(0 12px 15px rgba(0,0,0,.48));opacity:.78}.bundle-backpack{position:absolute;width:72px;right:2px;bottom:0;filter:drop-shadow(0 12px 14px rgba(0,0,0,.7))}.mix-footnote{line-height:1.5}
+@media(max-width:680px){.mix-card.bundle-card{min-height:142px;padding:16px 120px 16px 15px}.bundle-art{right:-8px;width:132px;height:102px}.bundle-laptop{width:92px;right:28px}.bundle-backpack{width:58px}.bundle-card .mix-price{right:10px;top:10px}.bundle-card strong{font-size:.86rem}}
 </style>
 <script>
 (()=>{const storageKey="dell-pr-press-access-v1",acceptedHashes=new Set(["0f0c449a061548dc79e10c2d6a85ced2763a9af226204e23c2605c28a157e995","52af1c60bacf76d6691e68092b8073f2ee2be82c76e234d37b8945e44b7c2564"]);let granted=false;try{granted=sessionStorage.getItem(storageKey)==="granted"}catch(e){}if(granted)return;document.documentElement.classList.add("press-access-locked");const digest=async value=>{const data=new TextEncoder().encode(value),hash=await crypto.subtle.digest("SHA-256",data);return Array.from(new Uint8Array(hash),byte=>byte.toString(16).padStart(2,"0")).join("")};const mount=()=>{const gate=document.createElement("div");gate.id="pressAccessGate";gate.setAttribute("role","dialog");gate.setAttribute("aria-modal","true");gate.setAttribute("aria-labelledby","pressAccessTitle");gate.innerHTML='<div class="press-access-card"><p class="press-access-kicker">Material para imprensa</p><h1 id="pressAccessTitle">Acesso reservado</h1><p class="press-access-copy">Digite a senha para acessar a sala de imprensa.</p><form id="pressAccessForm"><label class="press-access-label" for="pressAccessInput">Senha</label><div class="press-access-row"><input class="press-access-input" id="pressAccessInput" type="password" autocomplete="current-password" required><button class="press-access-submit" type="submit">Entrar</button></div><p class="press-access-error" id="pressAccessError" role="alert"></p></form></div>';document.body.appendChild(gate);const form=document.getElementById("pressAccessForm"),input=document.getElementById("pressAccessInput"),error=document.getElementById("pressAccessError");input.focus();form.addEventListener("submit",async event=>{event.preventDefault();error.textContent="Verificando…";try{if(acceptedHashes.has(await digest(input.value))){try{sessionStorage.setItem(storageKey,"granted")}catch(e){}gate.remove();document.documentElement.classList.remove("press-access-locked")}else{error.textContent="Senha incorreta. Tente novamente.";input.value="";input.focus()}}catch(e){error.textContent="Não foi possível validar a senha neste navegador."}})};if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",mount,{once:true});else mount()})();
@@ -396,63 +398,71 @@ A Dell Technologies (NYSE: DELL) é uma família única de empresas que fornece 
 <div class="mix-details"><span>8 GB RAM</span><span>512 GB SSD</span><span class="mix-os">Ubuntu Linux</span></div>
 <span class="mix-price">R$ 5.999</span>
 </article>
-<article class="mix-card" data-gpu="NVIDIA RTX 3050" data-os="Windows 11 Home" data-price="Preço a confirmar" data-processor="Intel Core 5-210H Series 2" data-ram="8 GB RAM" data-storage="512 GB SSD">
+<article class="mix-card" data-gpu="NVIDIA RTX 3050" data-os="Windows 11 Home" data-price="R$ 7.499" data-processor="Intel Core 5-210H Series 2" data-ram="8 GB RAM" data-storage="512 GB SSD">
 <strong>Intel Core 5-210H Series 2 | NVIDIA RTX 3050</strong>
 <div class="mix-details"><span>8 GB RAM</span><span>512 GB SSD</span><span class="mix-os">Windows 11 Home</span></div>
-<span class="mix-price">R$ —</span>
+<span class="mix-price">R$ 7.499</span>
 </article>
-<article class="mix-card" data-gpu="NVIDIA RTX 3050" data-os="Ubuntu Linux" data-price="R$ 6.699" data-processor="Intel Core 5-210H Series 2" data-ram="16 GB RAM" data-storage="512 GB SSD">
+<article class="mix-card" data-gpu="NVIDIA RTX 3050" data-os="Ubuntu Linux" data-price="R$ 7.499" data-processor="Intel Core 5-210H Series 2" data-ram="16 GB RAM" data-storage="512 GB SSD">
 <strong>Intel Core 5-210H Series 2 | NVIDIA RTX 3050</strong>
 <div class="mix-details"><span>16 GB RAM</span><span>512 GB SSD</span><span class="mix-os">Ubuntu Linux</span></div>
-<span class="mix-price">R$ 6.699</span>
+<span class="mix-price">R$ 7.499</span>
 </article>
-<article class="mix-card" data-gpu="NVIDIA RTX 3050" data-os="Windows 11 Home" data-price="Preço a confirmar" data-processor="Intel Core 5-210H Series 2" data-ram="16 GB RAM" data-storage="512 GB SSD">
+<article class="mix-card" data-gpu="NVIDIA RTX 3050" data-os="Windows 11 Home" data-price="R$ 8.999" data-processor="Intel Core 5-210H Series 2" data-ram="16 GB RAM" data-storage="512 GB SSD">
 <strong>Intel Core 5-210H Series 2 | NVIDIA RTX 3050</strong>
 <div class="mix-details"><span>16 GB RAM</span><span>512 GB SSD</span><span class="mix-os">Windows 11 Home</span></div>
-<span class="mix-price">R$ —</span>
+<span class="mix-price">R$ 8.999</span>
 </article>
-<article class="mix-card" data-gpu="NVIDIA RTX 4050" data-os="Ubuntu Linux" data-price="R$ 7.399" data-processor="Intel Core 5-210H Series 2" data-ram="8 GB RAM" data-storage="512 GB SSD">
+<article class="mix-card" data-gpu="NVIDIA RTX 4050" data-os="Ubuntu Linux" data-price="R$ 6.999" data-processor="Intel Core 5-210H Series 2" data-ram="8 GB RAM" data-storage="512 GB SSD">
 <strong>Intel Core 5-210H Series 2 | NVIDIA RTX 4050</strong>
 <div class="mix-details"><span>8 GB RAM</span><span>512 GB SSD</span><span class="mix-os">Ubuntu Linux</span></div>
-<span class="mix-price">R$ 7.399</span>
+<span class="mix-price">R$ 6.999</span>
 </article>
-<article class="mix-card" data-gpu="NVIDIA RTX 4050" data-os="Windows 11 Home" data-price="Preço a confirmar" data-processor="Intel Core 5-210H Series 2" data-ram="8 GB RAM" data-storage="512 GB SSD">
+<article class="mix-card" data-gpu="NVIDIA RTX 4050" data-os="Windows 11 Home" data-price="R$ 8.299" data-processor="Intel Core 5-210H Series 2" data-ram="8 GB RAM" data-storage="512 GB SSD">
 <strong>Intel Core 5-210H Series 2 | NVIDIA RTX 4050</strong>
 <div class="mix-details"><span>8 GB RAM</span><span>512 GB SSD</span><span class="mix-os">Windows 11 Home</span></div>
-<span class="mix-price">R$ —</span>
+<span class="mix-price">R$ 8.299</span>
 </article>
-<article class="mix-card" data-gpu="NVIDIA RTX 4050" data-os="Ubuntu Linux" data-price="Preço a confirmar" data-processor="Intel Core 5-210H Series 2" data-ram="16 GB RAM" data-storage="512 GB SSD">
+<article class="mix-card bundle-card" data-bundle="Alienware 15 + Mochila Alienware" data-gpu="NVIDIA RTX 4050" data-os="Ubuntu Linux" data-price="R$ 7.699" data-processor="Intel Core 5-210H Series 2" data-ram="16 GB RAM" data-storage="512 GB SSD">
+<span class="bundle-label">Bundle de lançamento</span>
 <strong>Intel Core 5-210H Series 2 | NVIDIA RTX 4050</strong>
 <div class="mix-details"><span>16 GB RAM</span><span>512 GB SSD</span><span class="mix-os">Ubuntu Linux</span></div>
-<span class="mix-price">R$ —</span>
+<span class="mix-price">R$ 7.699</span>
+<span class="bundle-art" aria-hidden="true"><img class="bundle-laptop" src="assets/web/front-angle.webp" alt=""><img class="bundle-backpack" src="assets/web/alienware-backpack.webp" alt=""></span>
 </article>
-<article class="mix-card" data-gpu="NVIDIA RTX 4050" data-os="Windows 11 Home" data-price="Preço a confirmar" data-processor="Intel Core 5-210H Series 2" data-ram="16 GB RAM" data-storage="512 GB SSD">
+<article class="mix-card bundle-card" data-bundle="Alienware 15 + Mochila Alienware" data-gpu="NVIDIA RTX 4050" data-os="Windows 11 Home" data-price="R$ 8.399" data-processor="Intel Core 5-210H Series 2" data-ram="16 GB RAM" data-storage="512 GB SSD">
+<span class="bundle-label">Bundle de lançamento</span>
 <strong>Intel Core 5-210H Series 2 | NVIDIA RTX 4050</strong>
 <div class="mix-details"><span>16 GB RAM</span><span>512 GB SSD</span><span class="mix-os">Windows 11 Home</span></div>
-<span class="mix-price">R$ —</span>
+<span class="mix-price">R$ 8.399</span>
+<span class="bundle-art" aria-hidden="true"><img class="bundle-laptop" src="assets/web/front-angle.webp" alt=""><img class="bundle-backpack" src="assets/web/alienware-backpack.webp" alt=""></span>
 </article>
-<article class="mix-card" data-gpu="NVIDIA RTX 3050" data-os="Ubuntu Linux" data-price="Preço a confirmar" data-processor="Intel Core 7-240H Series 2" data-ram="16 GB RAM" data-storage="512 GB SSD">
+<article class="mix-card bundle-card" data-bundle="Alienware 15 + Mochila Alienware" data-gpu="NVIDIA RTX 3050" data-os="Ubuntu Linux" data-price="R$ 7.699" data-processor="Intel Core 7-240H Series 2" data-ram="16 GB RAM" data-storage="512 GB SSD">
+<span class="bundle-label">Bundle de lançamento</span>
 <strong>Intel Core 7-240H Series 2 | NVIDIA RTX 3050</strong>
 <div class="mix-details"><span>16 GB RAM</span><span>512 GB SSD</span><span class="mix-os">Ubuntu Linux</span></div>
-<span class="mix-price">R$ —</span>
+<span class="mix-price">R$ 7.699</span>
+<span class="bundle-art" aria-hidden="true"><img class="bundle-laptop" src="assets/web/front-angle.webp" alt=""><img class="bundle-backpack" src="assets/web/alienware-backpack.webp" alt=""></span>
 </article>
-<article class="mix-card" data-gpu="NVIDIA RTX 3050" data-os="Windows 11 Home" data-price="Preço a confirmar" data-processor="Intel Core 7-240H Series 2" data-ram="16 GB RAM" data-storage="512 GB SSD">
+<article class="mix-card bundle-card" data-bundle="Alienware 15 + Mochila Alienware" data-gpu="NVIDIA RTX 3050" data-os="Windows 11 Home" data-price="R$ 8.399" data-processor="Intel Core 7-240H Series 2" data-ram="16 GB RAM" data-storage="512 GB SSD">
+<span class="bundle-label">Bundle de lançamento</span>
 <strong>Intel Core 7-240H Series 2 | NVIDIA RTX 3050</strong>
 <div class="mix-details"><span>16 GB RAM</span><span>512 GB SSD</span><span class="mix-os">Windows 11 Home</span></div>
-<span class="mix-price">R$ —</span>
+<span class="mix-price">R$ 8.399</span>
+<span class="bundle-art" aria-hidden="true"><img class="bundle-laptop" src="assets/web/front-angle.webp" alt=""><img class="bundle-backpack" src="assets/web/alienware-backpack.webp" alt=""></span>
 </article>
-<article class="mix-card" data-gpu="NVIDIA RTX 3050" data-os="Ubuntu Linux" data-price="Preço a confirmar" data-processor="Intel Core 7-240H Series 2" data-ram="16 GB RAM" data-storage="1 TB SSD">
+<article class="mix-card" data-gpu="NVIDIA RTX 3050" data-os="Ubuntu Linux" data-price="R$ 8.999" data-processor="Intel Core 7-240H Series 2" data-ram="16 GB RAM" data-storage="1 TB SSD">
 <strong>Intel Core 7-240H Series 2 | NVIDIA RTX 3050</strong>
 <div class="mix-details"><span>16 GB RAM</span><span>1 TB SSD</span><span class="mix-os">Ubuntu Linux</span></div>
-<span class="mix-price">R$ —</span>
+<span class="mix-price">R$ 8.999</span>
 </article>
-<article class="mix-card" data-gpu="NVIDIA RTX 3050" data-os="Windows 11 Home" data-price="Preço a confirmar" data-processor="Intel Core 7-240H Series 2" data-ram="16 GB RAM" data-storage="1 TB SSD">
+<article class="mix-card" data-gpu="NVIDIA RTX 3050" data-os="Windows 11 Home" data-price="R$ 10.599" data-processor="Intel Core 7-240H Series 2" data-ram="16 GB RAM" data-storage="1 TB SSD">
 <strong>Intel Core 7-240H Series 2 | NVIDIA RTX 3050</strong>
 <div class="mix-details"><span>16 GB RAM</span><span>1 TB SSD</span><span class="mix-os">Windows 11 Home</span></div>
-<span class="mix-price">R$ —</span>
+<span class="mix-price">R$ 10.599</span>
 </article>
 </div>
-<p class="mix-footnote">* Preços refletem os valores praticados no dia do lançamento em <a href="https://www.dell.com.br" rel="noopener" target="_blank">www.dell.com.br</a>.</p>
+<p class="mix-footnote">* Preços refletem os valores de oferta praticados no dia do lançamento em <a href="https://www.dell.com.br/" rel="noopener" target="_blank">www.dell.com.br</a>.</p>
 </div>
 </div>
 </section>
@@ -831,7 +841,7 @@ A Dell Technologies (NYSE: DELL) é uma família única de empresas que fornece 
     function onScroll(){const y=scrollY,h=document.documentElement.scrollHeight-innerHeight;progress.style.transform=`scaleX(${Math.min(1,y/Math.max(1,h))})`;if(!reduced){hero.forEach((el,i)=>{el.style.setProperty('--hero-y',`${y*(i?-.035:.06)}px`);el.style.setProperty('--hero-r',`${i?y*.001:-y*.0012}deg`)});if(thermalStage){const r=thermalStage.getBoundingClientRect(),p=(innerHeight-r.top)/(innerHeight+r.height);thermalStage.style.setProperty('--p1',`${(p-.5)*48}px`);thermalStage.style.setProperty('--p2',`${(p-.5)*-58}px`);thermalStage.style.setProperty('--p3',`${(p-.5)*30}px`)}if(displayBanner){const r=displayBanner.getBoundingClientRect(),p=(innerHeight-r.top)/(innerHeight+r.height);displayBanner.style.setProperty('--screen-y',`${(p-.5)*22}px`)}}}addEventListener('scroll',onScroll,{passive:true});onScroll();
     const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll('.reveal:not(.in)').forEach(el=>io.observe(el));
     const copySpecsBtn=document.getElementById('copySpecsBtn'),copySpecs=document.getElementById('copySpecs');if(copySpecsBtn&&copySpecs){copySpecsBtn.addEventListener('click',async()=>{const rows=[...copySpecs.querySelectorAll('tbody tr')].map(r=>{const c=[...r.querySelectorAll('td')].map(x=>x.textContent.trim());return `${c[0]}: ${c[1]}`});const text=`Alienware 15 — configurações Brasil\n\n${rows.join('\n')}`;try{await navigator.clipboard.writeText(text)}catch(e){const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove()}const original=copySpecsBtn.textContent;copySpecsBtn.textContent='Copiado ✓';setTimeout(()=>copySpecsBtn.textContent=original,1800)})}
-    const copyOffersBtn=document.getElementById('copyOffersBtn');if(copyOffersBtn){copyOffersBtn.addEventListener('click',async()=>{const offers=[...document.querySelectorAll('.mix-card')].map((card,index)=>{const d=card.dataset;return `Oferta ${index+1}\nProcessador e gráficos: ${d.processor} | ${d.gpu}\nMemória: ${d.ram}\nArmazenamento: ${d.storage}\nSistema operacional: ${d.os}\nPreço no lançamento: ${d.price}`});const text=`Alienware 15 — mix de configurações disponíveis no lançamento\n\n${offers.join('\n\n')}\n\n* Preços refletem os valores praticados no dia do lançamento em www.dell.com.br.`;try{await navigator.clipboard.writeText(text)}catch(e){const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove()}const original=copyOffersBtn.textContent;copyOffersBtn.textContent='Ofertas copiadas ✓';setTimeout(()=>copyOffersBtn.textContent=original,1800)})}
+    const copyOffersBtn=document.getElementById('copyOffersBtn');if(copyOffersBtn){copyOffersBtn.addEventListener('click',async()=>{const offers=[...document.querySelectorAll('.mix-card')].map((card,index)=>{const d=card.dataset;return `Oferta ${index+1}${d.bundle?' — BUNDLE DE LANÇAMENTO':''}\n${d.bundle?`Inclui: ${d.bundle}\n`:''}Processador e gráficos: ${d.processor} | ${d.gpu}\nMemória: ${d.ram}\nArmazenamento: ${d.storage}\nSistema operacional: ${d.os}\nPreço de lançamento: ${d.price}`});const text=`Alienware 15 — mix de configurações disponíveis no lançamento\n\n${offers.join('\n\n')}\n\n* Preços refletem os valores de oferta praticados no dia do lançamento em www.dell.com.br.`;try{await navigator.clipboard.writeText(text)}catch(e){const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove()}const original=copyOffersBtn.textContent;copyOffersBtn.textContent='Ofertas copiadas ✓';setTimeout(()=>copyOffersBtn.textContent=original,1800)})}
     const copyReleaseBtn=document.getElementById('copyReleaseBtn'),releasePlainText=document.getElementById('releasePlainText');if(copyReleaseBtn&&releasePlainText){copyReleaseBtn.addEventListener('click',async()=>{const text=releasePlainText.value;try{await navigator.clipboard.writeText(text)}catch(e){const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove()}const original=copyReleaseBtn.textContent;copyReleaseBtn.textContent='Release copiado ✓';setTimeout(()=>copyReleaseBtn.textContent=original,1800)})}
     const copyEmbedBtn=document.getElementById('copyEmbedBtn'),videoEmbedCode=document.getElementById('videoEmbedCode');if(copyEmbedBtn&&videoEmbedCode){copyEmbedBtn.addEventListener('click',async()=>{const text=videoEmbedCode.value.trim();try{await navigator.clipboard.writeText(text)}catch(e){const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove()}const original=copyEmbedBtn.textContent;copyEmbedBtn.textContent='Código copiado ✓';setTimeout(()=>copyEmbedBtn.textContent=original,1800)})}
     const modal=document.getElementById('modal'),modalImg=document.getElementById('modalImg'),modalDownload=document.getElementById('modalDownload'),modalClose=document.getElementById('modalClose');document.querySelectorAll('.gallery-item').forEach(item=>item.addEventListener('click',()=>{const web=item.dataset.web,zip=item.dataset.zip;modalImg.src=web;modalImg.alt=item.querySelector('img').alt;modalDownload.href=zip;modalDownload.setAttribute('download',zip.split('/').pop()||'alienware-15-foto.zip');modal.classList.add('open');document.body.style.overflow='hidden'}));function closeModal(e){if(e)e.preventDefault();modal.classList.remove('open');document.body.style.overflow=''}modalClose.addEventListener('click',closeModal);modalDownload.addEventListener('click',e=>{e.stopPropagation()});modal.addEventListener('click',e=>{if(e.target===modal)closeModal(e)});addEventListener('keydown',e=>{if(e.key==='Escape')closeModal(e)});
