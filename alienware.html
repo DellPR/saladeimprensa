@@ -120,7 +120,7 @@ html.press-access-locked body>*:not(#pressAccessGate){visibility:hidden}
 @media(max-width:520px){.press-access-card{padding:26px}.press-access-row{display:grid}.press-access-submit{width:100%}}
 .hero-price-callout{position:absolute;right:-1.5%;bottom:2%;width:min(390px,80%);padding:22px 24px;border-right:2px solid var(--cyan);background:linear-gradient(270deg,rgba(5,5,10,.78),rgba(5,5,10,.18));backdrop-filter:blur(10px);font-family:"Inter",sans-serif;color:#e9ebf2;font-size:clamp(1.15rem,2vw,1.65rem);font-weight:300;line-height:1.35;letter-spacing:-.025em;text-align:right;text-shadow:0 2px 18px rgba(0,0,0,.65)}.hero-price-callout strong{font-weight:400;color:#fff}.video-embed video{display:block;width:100%;height:100%;object-fit:contain}.video-actions{display:flex;gap:9px;flex-wrap:wrap;justify-content:flex-end}.video-download{display:inline-flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:11px 16px;background:rgba(255,255,255,.06);color:#fff;font-weight:760;transition:.2s}.video-download:hover{transform:translateY(-1px)}.launch-mix-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px}.floating-home{position:fixed;z-index:78;right:max(18px,calc((100vw - var(--max))/2));bottom:22px;width:54px;height:54px;border:1px solid rgba(68,255,154,.9);border-radius:50%;display:grid;place-items:center;background:var(--green);backdrop-filter:blur(16px);box-shadow:0 0 24px rgba(68,255,154,.32),0 14px 38px rgba(0,0,0,.38);color:#04120b;transition:.2s}.floating-home:hover{transform:translateY(-2px);border-color:#b8ffd7;background:#76ffb1}.floating-home svg{width:23px;height:23px}
 @media(max-width:680px){.hero-price-callout{right:0;left:auto;bottom:0;width:min(300px,82%);padding:16px 18px}.launch-mix-head{display:block}.launch-mix-head .copy-btn{width:100%;margin-top:18px}.video-actions{width:100%;justify-content:stretch}.video-actions>*{flex:1 1 100%}.floating-home{right:16px;bottom:calc(16px + env(safe-area-inset-bottom));width:50px;height:50px}}
-.mix-card.bundle-card{position:relative;min-height:148px;padding:18px 178px 18px 18px;border-color:rgba(68,255,154,.46);background:radial-gradient(circle at 88% 42%,rgba(88,230,255,.16),transparent 34%),linear-gradient(135deg,rgba(124,77,255,.17),rgba(7,7,13,.68) 62%);overflow:hidden}.mix-card.bundle-card:hover{border-color:rgba(68,255,154,.78)}.bundle-label{display:inline-flex;grid-column:1;width:max-content;margin-bottom:10px;padding:6px 9px;border:1px solid rgba(68,255,154,.42);border-radius:999px;background:rgba(68,255,154,.08);color:#8dffbd;font-size:.66rem;font-weight:760;letter-spacing:.12em;text-transform:uppercase}.bundle-card strong,.bundle-card .mix-details{grid-column:1}.bundle-card strong{font-size:.92rem;line-height:1.28}.bundle-card .mix-details{align-self:end}.bundle-card .mix-price{position:absolute;z-index:3;right:14px;top:14px;grid-column:auto;grid-row:auto;background:rgba(5,8,13,.76);backdrop-filter:blur(10px)}.bundle-art{position:absolute;right:6px;bottom:-10px;width:168px;height:118px;pointer-events:none}.bundle-laptop{position:absolute;width:116px;right:34px;bottom:5px;filter:drop-shadow(0 12px 15px rgba(0,0,0,.48));opacity:.78}.bundle-backpack{position:absolute;width:72px;right:2px;bottom:0;filter:drop-shadow(0 12px 14px rgba(0,0,0,.7))}.mix-footnote{line-height:1.5}
+.mix-card.bundle-card{position:relative;min-height:148px;padding:18px 178px 18px 18px;border-color:rgba(68,255,154,.46);background:radial-gradient(circle at 88% 42%,rgba(88,230,255,.16),transparent 34%),linear-gradient(135deg,rgba(124,77,255,.17),rgba(7,7,13,.68) 62%);overflow:hidden}.mix-card.bundle-card:hover{border-color:rgba(68,255,154,.78)}.bundle-label{display:inline-flex;align-items:center;justify-content:center;grid-column:1;width:max-content;max-width:100%;min-height:28px;margin-bottom:10px;padding:7px 11px;border:1px solid rgba(68,255,154,.42);border-radius:999px;background:rgba(68,255,154,.08);color:#8dffbd;font-size:.66rem;font-weight:760;line-height:1.15;letter-spacing:.1em;text-align:center;text-transform:uppercase}.bundle-card strong,.bundle-card .mix-details{grid-column:1}.bundle-card strong{font-size:.92rem;line-height:1.28}.bundle-card .mix-details{align-self:end}.bundle-card .mix-price{position:absolute;z-index:3;right:14px;top:14px;grid-column:auto;grid-row:auto;background:rgba(5,8,13,.76);backdrop-filter:blur(10px)}.bundle-art{position:absolute;right:6px;bottom:-10px;width:168px;height:118px;pointer-events:none}.bundle-laptop{position:absolute;width:116px;right:34px;bottom:5px;filter:drop-shadow(0 12px 15px rgba(0,0,0,.48));opacity:.78}.bundle-backpack{position:absolute;width:72px;right:2px;bottom:0;filter:drop-shadow(0 12px 14px rgba(0,0,0,.7))}.mix-footnote{line-height:1.5}
 @media(max-width:680px){.mix-card.bundle-card{min-height:142px;padding:16px 120px 16px 15px}.bundle-art{right:-8px;width:132px;height:102px}.bundle-laptop{width:92px;right:28px}.bundle-backpack{width:58px}.bundle-card .mix-price{right:10px;top:10px}.bundle-card strong{font-size:.86rem}}
 </style>
 <script>
@@ -424,28 +424,28 @@ A Dell Technologies (NYSE: DELL) é uma família única de empresas que fornece 
 <span class="mix-price">R$ 8.299</span>
 </article>
 <article class="mix-card bundle-card" data-bundle="Alienware 15 + Mochila Alienware" data-gpu="NVIDIA RTX 4050" data-os="Ubuntu Linux" data-price="R$ 7.699" data-processor="Intel Core 5-210H Series 2" data-ram="16 GB RAM" data-storage="512 GB SSD">
-<span class="bundle-label">Bundle de lançamento</span>
+<span class="bundle-label">Bundle de lançamento com Mochila Alienware</span>
 <strong>Intel Core 5-210H Series 2 | NVIDIA RTX 4050</strong>
 <div class="mix-details"><span>16 GB RAM</span><span>512 GB SSD</span><span class="mix-os">Ubuntu Linux</span></div>
 <span class="mix-price">R$ 7.699</span>
 <span class="bundle-art" aria-hidden="true"><img class="bundle-laptop" src="assets/web/front-angle.webp" alt=""><img class="bundle-backpack" src="assets/web/alienware-backpack.webp" alt=""></span>
 </article>
 <article class="mix-card bundle-card" data-bundle="Alienware 15 + Mochila Alienware" data-gpu="NVIDIA RTX 4050" data-os="Windows 11 Home" data-price="R$ 8.399" data-processor="Intel Core 5-210H Series 2" data-ram="16 GB RAM" data-storage="512 GB SSD">
-<span class="bundle-label">Bundle de lançamento</span>
+<span class="bundle-label">Bundle de lançamento com Mochila Alienware</span>
 <strong>Intel Core 5-210H Series 2 | NVIDIA RTX 4050</strong>
 <div class="mix-details"><span>16 GB RAM</span><span>512 GB SSD</span><span class="mix-os">Windows 11 Home</span></div>
 <span class="mix-price">R$ 8.399</span>
 <span class="bundle-art" aria-hidden="true"><img class="bundle-laptop" src="assets/web/front-angle.webp" alt=""><img class="bundle-backpack" src="assets/web/alienware-backpack.webp" alt=""></span>
 </article>
 <article class="mix-card bundle-card" data-bundle="Alienware 15 + Mochila Alienware" data-gpu="NVIDIA RTX 3050" data-os="Ubuntu Linux" data-price="R$ 7.699" data-processor="Intel Core 7-240H Series 2" data-ram="16 GB RAM" data-storage="512 GB SSD">
-<span class="bundle-label">Bundle de lançamento</span>
+<span class="bundle-label">Bundle de lançamento com Mochila Alienware</span>
 <strong>Intel Core 7-240H Series 2 | NVIDIA RTX 3050</strong>
 <div class="mix-details"><span>16 GB RAM</span><span>512 GB SSD</span><span class="mix-os">Ubuntu Linux</span></div>
 <span class="mix-price">R$ 7.699</span>
 <span class="bundle-art" aria-hidden="true"><img class="bundle-laptop" src="assets/web/front-angle.webp" alt=""><img class="bundle-backpack" src="assets/web/alienware-backpack.webp" alt=""></span>
 </article>
 <article class="mix-card bundle-card" data-bundle="Alienware 15 + Mochila Alienware" data-gpu="NVIDIA RTX 3050" data-os="Windows 11 Home" data-price="R$ 8.399" data-processor="Intel Core 7-240H Series 2" data-ram="16 GB RAM" data-storage="512 GB SSD">
-<span class="bundle-label">Bundle de lançamento</span>
+<span class="bundle-label">Bundle de lançamento com Mochila Alienware</span>
 <strong>Intel Core 7-240H Series 2 | NVIDIA RTX 3050</strong>
 <div class="mix-details"><span>16 GB RAM</span><span>512 GB SSD</span><span class="mix-os">Windows 11 Home</span></div>
 <span class="mix-price">R$ 8.399</span>
