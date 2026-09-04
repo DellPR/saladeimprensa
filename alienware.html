@@ -75,6 +75,9 @@
     .release-body p{margin:0 0 18px;color:#dfe2ea;font-size:1rem;line-height:1.72}
     .release-body p strong{color:#fff}
     .release-body .release-loc{font-weight:760;color:#fff}
+    .release-body h4{margin:30px 0 14px;color:#fff;font-size:1.25rem;line-height:1.3}
+    .release-media-note{padding:16px 18px;border:1px solid rgba(88,230,255,.18);border-radius:18px;background:rgba(88,230,255,.055)}
+    .release-media-note a{color:#b9feea;text-decoration:underline;text-underline-offset:3px}
     .release-side{padding:30px;border-left:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.015))}
     .release-side-stack{display:grid;gap:16px}
     .release-highlight-card{border:1px solid rgba(255,255,255,.08);border-radius:24px;padding:22px;background:rgba(7,7,12,.42)}
@@ -132,7 +135,7 @@ html.press-access-locked body>*:not(#pressAccessGate){visibility:hidden}
 @media(max-width:680px){.mix-card.bundle-card{min-height:142px;padding:16px 120px 16px 15px}.bundle-art{right:-8px;width:132px;height:102px}.bundle-laptop{width:92px;right:28px}.bundle-backpack{width:58px}.bundle-card .mix-price{right:10px;top:10px}.bundle-card strong{font-size:.86rem}.mix-price.promo-price,.bundle-card .mix-price.promo-price{min-width:105px;padding:8px 9px}}
 </style>
 <script>
-(()=>{const storageKey="dell-pr-press-access-v1",acceptedHashes=new Set(["0f0c449a061548dc79e10c2d6a85ced2763a9af226204e23c2605c28a157e995","52af1c60bacf76d6691e68092b8073f2ee2be82c76e234d37b8945e44b7c2564"]);let granted=false;try{granted=sessionStorage.getItem(storageKey)==="granted"}catch(e){}if(granted)return;document.documentElement.classList.add("press-access-locked");const digest=async value=>{const data=new TextEncoder().encode(value),hash=await crypto.subtle.digest("SHA-256",data);return Array.from(new Uint8Array(hash),byte=>byte.toString(16).padStart(2,"0")).join("")};const mount=()=>{const gate=document.createElement("div");gate.id="pressAccessGate";gate.setAttribute("role","dialog");gate.setAttribute("aria-modal","true");gate.setAttribute("aria-labelledby","pressAccessTitle");gate.innerHTML='<div class="press-access-card"><p class="press-access-kicker">Material para imprensa</p><h1 id="pressAccessTitle">Acesso reservado</h1><p class="press-access-copy">Digite a senha para acessar a sala de imprensa.</p><form id="pressAccessForm"><label class="press-access-label" for="pressAccessInput">Senha</label><div class="press-access-row"><input class="press-access-input" id="pressAccessInput" type="password" autocomplete="current-password" required><button class="press-access-submit" type="submit">Entrar</button></div><p class="press-access-error" id="pressAccessError" role="alert"></p></form></div>';document.body.appendChild(gate);const form=document.getElementById("pressAccessForm"),input=document.getElementById("pressAccessInput"),error=document.getElementById("pressAccessError");input.focus();form.addEventListener("submit",async event=>{event.preventDefault();error.textContent="Verificando…";try{if(acceptedHashes.has(await digest(input.value))){try{sessionStorage.setItem(storageKey,"granted")}catch(e){}gate.remove();document.documentElement.classList.remove("press-access-locked")}else{error.textContent="Senha incorreta. Tente novamente.";input.value="";input.focus()}}catch(e){error.textContent="Não foi possível validar a senha neste navegador."}})};if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",mount,{once:true});else mount()})();
+(()=>{const storageKey="dell-pr-press-access-v1",acceptedHashes=new Set(["0f0c449a061548dc79e10c2d6a85ced2763a9af226204e23c2605c28a157e995","52af1c60bacf76d6691e68092b8073f2ee2be82c76e234d37b8945e44b7c2564","9eb8711e1256976d409557893e73ae8f0d5d23c6a0c7078734becbe5c1c2bcdf","a558973bb3162972c7fe1b6d620f6bd4b5c70c9515660f84356d0f96716ef702"]);let granted=false;try{granted=sessionStorage.getItem(storageKey)==="granted"}catch(e){}if(granted)return;document.documentElement.classList.add("press-access-locked");const digest=async value=>{const data=new TextEncoder().encode(value),hash=await crypto.subtle.digest("SHA-256",data);return Array.from(new Uint8Array(hash),byte=>byte.toString(16).padStart(2,"0")).join("")};const mount=()=>{const gate=document.createElement("div");gate.id="pressAccessGate";gate.setAttribute("role","dialog");gate.setAttribute("aria-modal","true");gate.setAttribute("aria-labelledby","pressAccessTitle");gate.innerHTML='<div class="press-access-card"><p class="press-access-kicker">Material para imprensa</p><h1 id="pressAccessTitle">Acesso reservado</h1><p class="press-access-copy">Digite a senha para acessar a sala de imprensa.</p><form id="pressAccessForm"><label class="press-access-label" for="pressAccessInput">Senha</label><div class="press-access-row"><input class="press-access-input" id="pressAccessInput" type="password" autocomplete="current-password" required><button class="press-access-submit" type="submit">Entrar</button></div><p class="press-access-error" id="pressAccessError" role="alert"></p></form></div>';document.body.appendChild(gate);const form=document.getElementById("pressAccessForm"),input=document.getElementById("pressAccessInput"),error=document.getElementById("pressAccessError");input.focus();form.addEventListener("submit",async event=>{event.preventDefault();error.textContent="Verificando…";try{if(acceptedHashes.has(await digest(input.value))){try{sessionStorage.setItem(storageKey,"granted")}catch(e){}gate.remove();document.documentElement.classList.remove("press-access-locked")}else{error.textContent="Senha incorreta. Tente novamente.";input.value="";input.focus()}}catch(e){error.textContent="Não foi possível validar a senha neste navegador."}})};if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",mount,{once:true});else mount()})();
 </script>
 </head>
 <body>
@@ -193,8 +196,8 @@ html.press-access-locked body>*:not(#pressAccessGate){visibility:hidden}
       <span class="release-kicker">
 <span class="dot">
 </span> RELEASE OFICIAL · BRASIL</span>
-      <h3>Alienware amplia portfólio no Brasil para alcançar mais gamers</h3>
-      <p class="release-deck">Novo notebook Alienware 15 será a porta de entrada para os fãs da marca no país, unindo desempenho, qualidade e durabilidade.</p>
+      <h3>Alienware 15 chega ao Brasil para levar a experiência da marca a mais gamers</h3>
+      <p class="release-deck"><em>Notebook produzido em Hortolândia amplia o acesso à Alienware no Brasil e chega a partir de R$ 5.999 no ano em que a marca completa 30 anos.</em></p>
     </div>
     <div class="release-actions">
       <button class="release-copy-btn" id="copyReleaseBtn" type="button">Copiar texto do release</button>
@@ -205,25 +208,31 @@ html.press-access-locked body>*:not(#pressAccessGate){visibility:hidden}
   <div class="release-grid">
     <article class="release-article">
       <div class="release-meta">
-        <span>São Paulo, 14 de maio de 2026</span>
+        <span>São Paulo, 10 de setembro de 2026</span>
         <span>Alienware · Brasil</span>
-        <span>Preço e disponibilidade: em breve</span>
+        <span>A partir de R$ 5.999</span>
       </div>
       <div class="release-body">
-        <p>
-<span class="release-loc">São Paulo, 14 de maio de 2026</span> – A <strong>Alienware</strong> confirma o lançamento do notebook <strong>Alienware 15</strong> para o mercado brasileiro ainda este ano. Desenvolvido para atender ao gamer que busca um balanço entre desempenho e custo-benefício, o modelo reforça a estratégia da marca de alcançar mais gamers com uma proposta que combina <strong>alta performance, qualidade comprovada e design projetado para durar</strong>. O Alienware 15 chegará ao mercado nacional ostentando um design que segue os padrões icônicos da marca, com curvas provocantes e o uso de materiais de alta qualidade e resistência na construção.</p>
-        <p>A Alienware consolida sua presença no mercado brasileiro com uma oferta de portfólio ainda mais completa, tendo o Alienware 15 como produto de entrada para clientes que sempre quiseram acessar a experiência da marca. A nova organização do catálogo seguirá três frentes dedicadas: <strong>Alienware 15</strong>, para quem busca o balanço entre desempenho e custo-benefício; <strong>Alienware 16 Aurora</strong>, voltado ao gamer e ao uso híbrido de quem quer um modelo com tela maior e design superior; e <strong>Alienware 16 Area-51</strong>, desenvolvido para o público gamer entusiasta que busca o máximo de performance e força bruta em um chassi robusto.</p>
-        <p>O novo notebook que representará a oferta inicial no portfólio da Alienware no Brasil contará com tela de <strong>15,3 polegadas</strong> na proporção <strong>16:10</strong>, com resolução <strong>FHD+</strong> e <strong>165 Hz</strong>, além dos processadores <strong>Intel Core Series 2</strong> e placas de vídeo <strong>NVIDIA GeForce</strong>. As configurações completas a serem lançadas no Brasil serão divulgadas próximo à data de lançamento local.</p>
-        <p>O Alienware 15 foi desenvolvido para entregar as características essenciais esperadas de um notebook gamer e atender às demandas de produtividade do dia a dia. Para garantir um resfriamento à altura do desempenho, o novo notebook traz a tecnologia <strong>Alienware Cryo-tech</strong>, equipada com <strong>duas ventoinhas e três heat pipes de cobre</strong>, para ajudar a movimentar o ar quente para a saída traseira do equipamento e manter a estabilidade mesmo nas sessões mais intensas.</p>
-        <p>Para atestar sua durabilidade e a qualidade de construção, o Alienware 15 foi submetido a rigorosos testes internos aplicados no processo de produção, contando com dobradiças preparadas para <strong>20.000 ciclos</strong> de abertura e fechamento, teclado testado para <strong>40.000 pressionamentos</strong>, resistência a derramamentos acidentais de até <strong>57 mL</strong> e resistência a quedas de até <strong>45 cm</strong>, em todas as seis faces e quatro cantos.</p>
-        <p>O modelo também traz a tecla de atalho <strong>Modo Stealth</strong>, que altera as definições do sistema para uma operação mais silenciosa, reforçando a vocação do produto para uma rotina híbrida, com uso em diferentes contextos ao longo do dia.</p>
+        <p class="release-media-note"><em>Para acessar imagens em alta resolução e outros materiais de apoio, <a href="https://dellpr.github.io/saladeimprensa/alienware.html">clique aqui</a> e acesse com a senha <strong>AWXPS</strong>.</em></p>
+        <p><span class="release-loc">São Paulo, 10 de setembro de 2026</span> – A Alienware apresenta no Brasil o Alienware 15, notebook gamer fabricado no país para levar a experiência da marca a mais gamers. Com preços promocionais durante o período de lançamento a partir de R$ 5.999, a novidade amplia as faixas de preço em que a Alienware atua no país e cria uma nova porta de entrada para quem busca desempenho, qualidade de construção, durabilidade e o design característico da marca.</p>
+        <p>A chegada do Alienware 15 acontece no período em que a Alienware completa 30 anos globalmente e uma década de presença estruturada no mercado brasileiro.</p>
+        <p>A novidade reforça a estratégia de ampliar o alcance do portfólio no país, levando a experiência da marca a mais jogadores sem abrir mão de atributos essenciais para jogos e produtividade. Fabricado na fábrica em Hortolândia (SP), o Alienware 15 marca também um novo momento para a operação nacional: pela primeira vez, a Alienware passa a produzir localmente três linhas de notebooks gamers — Alienware 15, Alienware 16 Aurora e Alienware 16 Area-51.</p>
+        <h4>Alienware 15</h4>
+        <p>O Alienware 15 foi desenvolvido para oferecer uma experiência gamer equilibrada e versátil, voltada a quem alterna entre jogos, estudo, trabalho e entretenimento. Mesmo como o novo ponto de entrada da linha, o modelo traz atributos fundamentais da Alienware, incluindo tela com alta taxa de atualização, projeto térmico avançado e uma construção projetada para suportar o uso diário.</p>
+        <p>No Brasil, o notebook estará disponível com processadores Intel Core 5 210H ou Intel Core 7 240H, placas de vídeo NVIDIA GeForce RTX 3050 ou RTX 4050 Laptop GPU com 6 GB GDDR6, 8 GB ou 16 GB de memória DDR5 de 5600 MT/s e SSD PCIe NVMe M.2 Gen 4 de 512 GB ou 1 TB.</p>
+        <p>Para impulsionar o desempenho extremo dos componentes, a marca equipa os modelos com o sistema de resfriamento Alienware Cryo-tech, que utiliza duas ventoinhas e três heat pipes de cobre, com entradas de ar na parte superior e inferior do equipamento e exaustão traseira dedicada. O desenho busca manter a estabilidade do sistema em sessões mais exigentes de jogos. Além disso, o recurso Modo Stealth, ativado via tecla F7, ajusta as ventoinhas para uma operação silenciosa em momentos de trabalho ou estudo.</p>
+        <p>A tela de 15,3 polegadas tem resolução FHD+ (1920 × 1200), proporção 16:10, taxa de atualização de 165 Hz e brilho de 300 nits. O conjunto foi pensado para oferecer imagens fluidas em jogos, além de mais espaço vertical para tarefas de produtividade.</p>
+        <p>Com acabamento Nova Black e design baseado na linguagem visual AW30, o Alienware 15 combina linhas mais compactas e contornos arredondados a recursos funcionais para o uso cotidiano. O modelo foi testado tanto para quedas acidentais, quanto a respingos de líquidos no teclado.</p>
+        <h4>Legado Alienware: 30 anos globais e uma década de presença no Brasil</h4>
+        <p>A trajetória da Alienware começou em 1996 em uma garagem próxima a Miami, quando dois amigos decidiram montar computadores customizados de alto desempenho em uma época em que os PCs eram pensados quase exclusivamente para escritórios. Desde o início, o propósito foi desenvolver máquinas projetadas para gamers e para as exigências dos jogos mais avançados. Essa busca consolidou marcos no setor, como em 2004, quando o desktop Aurora ALX ajudou a consolidar a refrigeração líquida no segmento, tecnologia que até hoje evolui na linha Aurora e Area-51, referência em cenários competitivos de e-sports.</p>
+        <p>No Brasil, a história da Alienware se consolidou com o retorno estruturado da marca em abril de 2016, com os notebooks Alienware 15 e 17. A relação com o mercado local se aprofundou em 2021 com o início da fabricação nacional de notebooks pelo Alienware m15 e, em 2023, com a produção local dos desktops Aurora. Além dos produtos, a marca fortaleceu os laços com os jogadores brasileiros com a inauguração da <em>Alienware Training Facility</em> para a Team Liquid em São Paulo, além da presença contínua nos principais eventos do setor.</p>
       </div>
     </article>
     <aside class="release-side">
       <div class="release-side-stack">
         <div class="release-quote">
-          <p>“Com o Alienware 15, vivemos um momento histórico para a marca no Brasil: pela primeira vez, passamos a produzir localmente três modelos Alienware, ampliando de forma consistente nossa presença no país. Esse lançamento reforça nosso compromisso em oferecer mais opções para diferentes perfis de gamers, sempre com o padrão de desempenho, qualidade, durabilidade e design premium que define a experiência Alienware. O Alienware 15 chega para atender quem busca um notebook versátil e com excelente custo-benefício, sem abrir mão da potência e da identidade da marca.”</p>
-          <cite>Tomás Berny · gerente de produtos gaming da Dell Technologies Brasil</cite>
+          <p>“É muito importante chegar nesses marcos históricos ampliando o acesso à Alienware para mais gamers no Brasil. A marca é um objeto de desejo para gerações de jogadores e, agora, mais pessoas poderão fazer parte dessa comunidade com um produto pensado para entregar uma verdadeira experiência de alto desempenho, qualidade e design com o DNA Alienware.”</p>
+          <cite>Tomás Berny · gerente de produtos Alienware</cite>
         </div>
         </div>
 </aside>
@@ -231,37 +240,47 @@ html.press-access-locked body>*:not(#pressAccessGate){visibility:hidden}
   <div class="release-bottom">
     <div>
       <h4>Preço e disponibilidade</h4>
-      <p>
-<strong>Em breve.</strong>
-</p>
-      <h4 style="margin-top:18px">Sobre a Dell Technologies</h4>
-      <p>A Dell Technologies (NYSE: DELL) é uma família única de empresas que fornece a infraestrutura essencial que ajuda organizações e indivíduos a construírem seu futuro digital e transformar a maneira como trabalham, vivem e se divertem. A empresa fornece aos clientes o portfólio de tecnologias e serviços mais amplo e inovador para a era da IA.</p>
+      <p>O Alienware 15 estará disponível para compra no <a href="https://www.dell.com/pt-br/work/shop/cty/pdp/spd/alienware-da15260-gaming-laptop">site oficial da marca</a>, com preço promocional de lançamento a partir de <strong>R$ 5.999</strong>.</p>
+      <p style="margin-top:12px">O modelo também estará disponível em Amazon, Kabum, Magazine Luiza e Mercado Livre. Para verificar configurações disponíveis e preços, os varejistas devem ser consultados diretamente.</p>
     </div>
   </div>
   </div>
   <button class="release-toggle-btn" type="button" aria-expanded="false" aria-controls="alienwareReleaseContent">Ler press release completo ↓</button>
-  <textarea hidden id="releasePlainText">Alienware amplia portfólio no Brasil para alcançar mais gamers
+  <textarea hidden id="releasePlainText">Para acessar imagens em alta resolução e outros materiais de apoio, acesse https://dellpr.github.io/saladeimprensa/alienware.html com a senha AWXPS.
 
-Novo notebook Alienware 15 será a porta de entrada para os fãs da marca no país, unindo desempenho, qualidade e durabilidade.
+Alienware 15 chega ao Brasil para levar a experiência da marca a mais gamers
 
-São Paulo, 14 de maio de 2026 – A Alienware confirma o lançamento do notebook Alienware 15 para o mercado brasileiro ainda este ano. Desenvolvido para atender ao gamer que busca um balanço entre desempenho e custo-benefício, o modelo reforça a estratégia da marca de alcançar mais gamers com uma proposta que combina alta performance, qualidade comprovada e design projetado para durar. O Alienware 15 chegará ao mercado nacional ostentando um design que segue os padrões icônicos da marca, com curvas provocantes e o uso de materiais de alta qualidade e resistência na construção.
+Notebook produzido em Hortolândia amplia o acesso à Alienware no Brasil e chega a partir de R$ 5.999 no ano em que a marca completa 30 anos.
 
-A Alienware consolida sua presença no mercado brasileiro com uma oferta de portfólio ainda mais completa, tendo o Alienware 15 como produto de entrada para clientes que sempre quiseram acessar a experiência da marca. A nova organização do catálogo seguirá três frentes dedicadas: Alienware 15, para quem busca o balanço entre desempenho e custo-benefício; Alienware 16 Aurora, voltado ao gamer e ao uso híbrido de quem quer um modelo com tela maior e design superior; e Alienware 16 Area-51, desenvolvido para o público gamer entusiasta que busca o máximo de performance e força bruta em um chassi robusto.
+São Paulo, 10 de setembro de 2026 – A Alienware apresenta no Brasil o Alienware 15, notebook gamer fabricado no país para levar a experiência da marca a mais gamers. Com preços promocionais durante o período de lançamento a partir de R$ 5.999, a novidade amplia as faixas de preço em que a Alienware atua no país e cria uma nova porta de entrada para quem busca desempenho, qualidade de construção, durabilidade e o design característico da marca.
 
-O novo notebook que representará a oferta inicial no portfólio da Alienware no Brasil contará com tela de 15,3 polegadas na proporção 16:10, com resolução FHD+ e 165 Hz, além dos processadores Intel Core Series 2 e placas de vídeo NVIDIA GeForce. As configurações completas a serem lançadas no Brasil serão divulgadas próximo à data de lançamento local.
+A chegada do Alienware 15 acontece no período em que a Alienware completa 30 anos globalmente e uma década de presença estruturada no mercado brasileiro. “É muito importante chegar nesses marcos históricos ampliando o acesso à Alienware para mais gamers no Brasil. A marca é um objeto de desejo para gerações de jogadores e, agora, mais pessoas poderão fazer parte dessa comunidade com um produto pensado para entregar uma verdadeira experiência de alto desempenho, qualidade e design com o DNA Alienware”, explica Tomás Berny, gerente de produtos Alienware.
 
-“Com o Alienware 15, vivemos um momento histórico para a marca no Brasil: pela primeira vez, passamos a produzir localmente três modelos Alienware, ampliando de forma consistente nossa presença no país. Esse lançamento reforça nosso compromisso em oferecer mais opções para diferentes perfis de gamers, sempre com o padrão de desempenho, qualidade, durabilidade e design premium que define a experiência Alienware. O Alienware 15 chega para atender quem busca um notebook versátil e com excelente custo-benefício, sem abrir mão da potência e da identidade da marca”, afirma Tomás Berny, gerente de produtos gaming da Dell Technologies Brasil.
+A novidade reforça a estratégia de ampliar o alcance do portfólio no país, levando a experiência da marca a mais jogadores sem abrir mão de atributos essenciais para jogos e produtividade. Fabricado na fábrica em Hortolândia (SP), o Alienware 15 marca também um novo momento para a operação nacional: pela primeira vez, a Alienware passa a produzir localmente três linhas de notebooks gamers — Alienware 15, Alienware 16 Aurora e Alienware 16 Area-51.
 
-O Alienware 15 foi desenvolvido para entregar as características essenciais esperadas de um notebook gamer e atender às demandas de produtividade do dia a dia. Para garantir um resfriamento à altura do desempenho, o novo notebook traz a tecnologia Alienware Cryo-tech, equipada com duas ventoinhas e três heat pipes de cobre, para ajudar a movimentar o ar quente para a saída traseira do equipamento e manter a estabilidade mesmo nas sessões mais intensas.
+Alienware 15
 
-Para atestar sua durabilidade e a qualidade de construção, o Alienware 15 foi submetido a rigorosos testes internos aplicados no processo de produção, contando com dobradiças preparadas para 20.000 ciclos de abertura e fechamento, teclado testado para 40.000 pressionamentos, resistência a derramamentos acidentais de até 57 ml e resistência a quedas de até 45 cm, em todas as seis faces e quatro cantos.
+O Alienware 15 foi desenvolvido para oferecer uma experiência gamer equilibrada e versátil, voltada a quem alterna entre jogos, estudo, trabalho e entretenimento. Mesmo como o novo ponto de entrada da linha, o modelo traz atributos fundamentais da Alienware, incluindo tela com alta taxa de atualização, projeto térmico avançado e uma construção projetada para suportar o uso diário.
 
-O modelo também traz a tecla de atalho Modo Stealth, que altera as definições do sistema para uma operação mais silenciosa, reforçando a vocação do produto para uma rotina híbrida, com uso em diferentes contextos ao longo do dia.
+No Brasil, o notebook estará disponível com processadores Intel Core 5 210H ou Intel Core 7 240H, placas de vídeo NVIDIA GeForce RTX 3050 ou RTX 4050 Laptop GPU com 6 GB GDDR6, 8 GB ou 16 GB de memória DDR5 de 5600 MT/s e SSD PCIe NVMe M.2 Gen 4 de 512 GB ou 1 TB.
 
-Preço e disponibilidade: em breve
+Para impulsionar o desempenho extremo dos componentes, a marca equipa os modelos com o sistema de resfriamento Alienware Cryo-tech, que utiliza duas ventoinhas e três heat pipes de cobre, com entradas de ar na parte superior e inferior do equipamento e exaustão traseira dedicada. O desenho busca manter a estabilidade do sistema em sessões mais exigentes de jogos. Além disso, o recurso Modo Stealth, ativado via tecla F7, ajusta as ventoinhas para uma operação silenciosa em momentos de trabalho ou estudo.
 
-Sobre a Dell Technologies
-A Dell Technologies (NYSE: DELL) é uma família única de empresas que fornece a infraestrutura essencial que ajuda organizações e indivíduos a construírem seu futuro digital e transformar a maneira como trabalham, vivem e se divertem. A empresa fornece aos clientes o portfólio de tecnologias e serviços mais amplo e inovador para a era da IA.</textarea>
+A tela de 15,3 polegadas tem resolução FHD+ (1920 × 1200), proporção 16:10, taxa de atualização de 165 Hz e brilho de 300 nits. O conjunto foi pensado para oferecer imagens fluidas em jogos, além de mais espaço vertical para tarefas de produtividade.
+
+Com acabamento Nova Black e design baseado na linguagem visual AW30, o Alienware 15 combina linhas mais compactas e contornos arredondados a recursos funcionais para o uso cotidiano. O modelo foi testado tanto para quedas acidentais, quanto a respingos de líquidos no teclado.
+
+Legado Alienware: 30 anos globais e uma década de presença no Brasil
+
+A trajetória da Alienware começou em 1996 em uma garagem próxima a Miami, quando dois amigos decidiram montar computadores customizados de alto desempenho em uma época em que os PCs eram pensados quase exclusivamente para escritórios. Desde o início, o propósito foi desenvolver máquinas projetadas para gamers e para as exigências dos jogos mais avançados. Essa busca consolidou marcos no setor, como em 2004, quando o desktop Aurora ALX ajudou a consolidar a refrigeração líquida no segmento, tecnologia que até hoje evolui na linha Aurora e Area-51, referência em cenários competitivos de e-sports.
+
+No Brasil, a história da Alienware se consolidou com o retorno estruturado da marca em abril de 2016, com os notebooks Alienware 15 e 17. A relação com o mercado local se aprofundou em 2021 com o início da fabricação nacional de notebooks pelo Alienware m15 e, em 2023, com a produção local dos desktops Aurora. Além dos produtos, a marca fortaleceu os laços com os jogadores brasileiros com a inauguração da Alienware Training Facility para a Team Liquid em São Paulo, além da presença contínua nos principais eventos do setor.
+
+Preço e disponibilidade
+
+O Alienware 15 estará disponível para compra no site oficial da marca (https://www.dell.com/pt-br/work/shop/cty/pdp/spd/alienware-da15260-gaming-laptop), com preço promocional de lançamento a partir de R$ 5.999.
+
+O modelo também estará disponível em Amazon, Kabum, Magazine Luiza e Mercado Livre. Para verificar configurações disponíveis e preços, os varejistas devem ser consultados diretamente.</textarea>
 </div>
 </section>
 <section class="launch-video" id="video-lancamento">
